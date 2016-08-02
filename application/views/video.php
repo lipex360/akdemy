@@ -29,9 +29,9 @@ $this->load->view('header');
 
 		<div class="col-md-12">
 		<a href="" class="bg-finepink pink padding-5 pull-left margin-right-10"><i class="fa fa-check-square-o margin-right-5 margin-left-5" aria-hidden="true"></i> Concluir Atividade</a>
-		<a href="" class="bg-finepink pink padding-5 pull-left margin-right-10"><i class="fa fa-check-circle margin-right-5 margin-left-5" aria-hidden="true"></i> Atividade Concluída</a>
+		<!-- <a href="" class="bg-finepink pink padding-5 pull-left margin-right-10"><i class="fa fa-check-circle margin-right-5 margin-left-5" aria-hidden="true"></i> Atividade Concluída</a> -->
 		<a href="" class="bg-finepink pink padding-5 pull-left"><i class="fa fa-star-o margin-right-5 margin-left-5" aria-hidden="true"></i> Incluir nos Favoritos</a>
-		<a href="" class="bg-finepink pink padding-5 pull-left"><i class="fa fa-star margin-right-5 margin-left-5" aria-hidden="true"></i> Remover dos Favoritos</a>
+		<!-- <a href="" class="bg-finepink pink padding-5 pull-left"><i class="fa fa-star margin-right-5 margin-left-5" aria-hidden="true"></i> Remover dos Favoritos</a> -->
 		<a href="" class="bg-finepink pink padding-5 pull-right"><i class="fa fa-question-circle margin-right-5 margin-left-5" aria-hidden="true"></i> Precisa de Ajuda?</a>
 		</div>
 
