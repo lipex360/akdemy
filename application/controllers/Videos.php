@@ -7,12 +7,24 @@ class Videos extends CI_Controller {
 		parent::__construct();
 		if(!isset($_SESSION['usuario'])){
 			redirect('home');
-		}
-
-		
+		}	
 	}
 
-	
+	public function view($id){
+		$view = array();
+		// var_dump($_SESSION['usuario']);
+		extract($_SESSION['usuario']);
+
+		// MENU DE ACESSO
+		$menu = $this->usuario->menu($nivel_id);
+		if($menu){
+			$view['menu'] = $menu;
+		}
+
+		$this->load->view('video', $view);
+	}
+
+
 
 }
 

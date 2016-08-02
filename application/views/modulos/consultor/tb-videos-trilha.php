@@ -32,9 +32,9 @@
 					$bgref = $i%2;
 			?>
 				<tr class="linha-<?= $bgref ?>">
-					<td><a href="<?= base_url('trilha/video/'.$video['id']); ?>" class="pink"><?= $video['titulo'] ?></a></td>
-					<td><a href="<?= base_url('trilha/video/'.$video['id']); ?>" class="pink"><?= limitaTexto($video['descricao'],120) ?></a></td>
-					<td class="text-center"><a href="<?= base_url('trilha/video/'.$video['id']); ?>" class="pink"><?= $video['views'] ?></a></td>
+					<td><a href="<?= base_url('videos/view/'.$video['id']); ?>" class="pink"><?= $video['titulo'] ?></a></td>
+					<td><a href="<?= base_url('videos/view/'.$video['id']); ?>" class="pink"><?= limitaTexto($video['descricao'],120) ?></a></td>
+					<td class="text-center"><a href="<?= base_url('videos/view/'.$video['id']); ?>" class="pink"><?= $video['views'] ?></a></td>
 					<td class="text-center"><a href="javascript:void(0)" class="pink favicon" title="<?= $title; ?>" alt="<?= $video['id']; ?>"><i id="favicon" class="fa <?= $classe; ?>" aria-hidden="true"></i></a></td>
 					<td class="text-center fa-i" ><i class="fa fa-check-circle" aria-hidden="true" title="Vídeo Concluído"></i></td>
 				</tr>

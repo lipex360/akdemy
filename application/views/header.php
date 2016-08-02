@@ -48,7 +48,7 @@
 					<ul class="list-unstyled list-inline menu">
 						
 						<li>
-							<a href="<?= base_url('painel'); ?>" title="Voltar ao Início">
+							<a href="<?= base_url('dashboard'); ?>" title="Voltar ao Início">
 								<i class="fa fa-home" aria-hidden="true" ></i>
 							</a>
 						</li>
