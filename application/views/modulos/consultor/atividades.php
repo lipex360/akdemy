@@ -1,6 +1,7 @@
 <!-- Resumo de Atividades -->
+<div class="container shadow-grey bg-white border-radius padding-top-30 padding-bottom-50">
+
 <div class="row margin-top-10">
-  
   <div class="col-md-3">
     <div class="foto border-radius">
       <img src="<?= base_url('assets/images/blank_imagem.gif')?>" alt="Imagem de Apresentação">
@@ -23,5 +24,6 @@
     </div>
   </div>
 
+</div>
 </div>
 <!-- ### Resumo de Atividades ### -->

@@ -28,10 +28,10 @@ class Videos extends CI_Controller {
 
 
 
-	// Configura Visualizações
+	// Seta Visualizações
 	public function setViews($id, $video_id){
 		if(is_null(get_cookie('view_cookie'))){
-			set_cookie('view_cookie', 'repeat', 5);
+			set_cookie('view_cookie', 'repeat', 20);
 			
 			$views = $this->videos->getViews($id, $video_id);
 			if($views->num_rows()){

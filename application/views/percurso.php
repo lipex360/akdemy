@@ -32,5 +32,7 @@
 
 </div>
 <!-- ### Centro ### -->
-
-<?php $this->load->view('rodape'); ?>
+<?php 
+	$this->load->view('modulos/comentarios');
+	$this->load->view('rodape'); 
+?>

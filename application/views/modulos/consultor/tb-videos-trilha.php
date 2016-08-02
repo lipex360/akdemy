@@ -29,14 +29,26 @@
 						break;
 					}
 
+					switch ($video['status']) {
+						case 1:
+							$sTitle = 'Atividade Não Concluída';
+							$iClass = "fa fa-circle-thin";
+						break;
+
+						case 2:
+							$sTitle = 'Atividade Concluída';
+							$iClass = "fa fa-check-circle";
+						break;
+					}
+
 					$bgref = $i%2;
 			?>
 				<tr class="linha-<?= $bgref ?>">
 					<td><a href="<?= base_url('videos/view/'.$video['id']); ?>" class="pink"><?= $video['titulo'] ?></a></td>
 					<td><a href="<?= base_url('videos/view/'.$video['id']); ?>" class="pink"><?= limitaTexto($video['descricao'],120) ?></a></td>
-					<td class="text-center"><a href="<?= base_url('videos/view/'.$video['id']); ?>" class="pink"><?= $video['views'] ?></a></td>
+					<td class="text-center"><a href="<?= base_url('videos/view/'.$video['id']); ?>" title="<?= $video['views'] ?> Visualizações" class="pink"><?= $video['views'] ?></a></td>
 					<td class="text-center"><a href="javascript:void(0)" class="pink favicon" title="<?= $title; ?>" alt="<?= $video['id']; ?>"><i id="favicon" class="fa <?= $classe; ?>" aria-hidden="true"></i></a></td>
-					<td class="text-center fa-i" ><i class="fa fa-check-circle" aria-hidden="true" title="Vídeo Concluído"></i></td>
+					<td class="text-center fa-i" style="font-size:14px"><i class="<?= $iClass; ?>" aria-hidden="true" title="<?= $sTitle; ?>"></i></td>
 				</tr>
 			<?php $i++; } ?>
 			</tbody>
