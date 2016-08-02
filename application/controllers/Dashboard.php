@@ -27,12 +27,6 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard', $view);
 	}
 
-lakjsdflakjsdf
-alkjasdlfkjas
-alkjsdlafkjsdf
-
-
-
 
 	public function getIndicadas($id, $tutor_id){
 		$trilhas_indicadas  = $this->trilhas->usuarios_trilhas($id, $tutor_id);
