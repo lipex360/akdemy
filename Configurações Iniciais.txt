@@ -1,0 +1,8 @@
+application/config/config.php
+$config['base_url'] = '';
+
+application/config/database.php
+$db['default'] = array();
+
+application/config/config.php
+$config['index_page'] = ''; (zerar valor: url amigável)

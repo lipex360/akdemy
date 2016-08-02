@@ -1,0 +1,72 @@
+*{font-family: 'Open Sans'}
+body{background: #EFEFEF; color: #FF7979 !important;}
+textarea:focus{outline: none !important;}
+
+.menu i{color:#F9B0BD; font-size: 24px; font-weight: thin}
+.menu i:hover{color:#F791A3;}
+
+
+.pink{color:#FF3E3E !important}
+a.pink{color:#FF7979 !important}
+a.pink:hover{color:#FF3E3E !important}
+
+
+.topo-sistema{background: #FCDAE0; height: 60px;}
+.topo-menu{height: 40px; background: #fff;}
+.resumo p{margin:0;}
+
+.box-input{width: 100%; height: 45px; background: #FDF0F2;}
+.box-input input{color:#FF7979 !important; background: #FDF0F2 !important; border:none; width: 90%}
+.button{height: 40px; color:#FF7979 !important; background: #FDF0F2 !important; border:none; width: 100%}
+
+.input-sistem{border:1px solid #F9D2D8; padding:5px 10px; border-radius: 5px; width: 100%}
+.submit-sistem{background: #FDF0F2; padding:5px 10px; border:1px solid #F9D2D8; border-radius: 5px; width: 100%}
+
+.foto{width:240px; height: 240px; background: #FDF0F2; padding:10px;}
+
+.mensagem-aluno{height: 120px;}
+
+.tableTitle{font-size: 24px !important; float: left !important; margin-right: 5px;}
+
+table{width: 100%}
+table thead{background: #FCEBED; border-bottom: 1px solid #F9D2D8;}
+table thead th{padding: 10px; cursor: default;}
+table tbody td{padding: 8px 10px}
+
+tr.linha-0 td{background: #FFFBFC}
+tr.linha-1 td{background: #FDF0F2}
+
+.comentarios p{margin:0;}
+textarea.box-comentario{ width:100%; border:1px solid #FBD9DF; height: 200px}
+
+.fa-i{font-size: 18px; cursor: default;}
+
+
+
+.element {
+ 	animation-name: color_change;
+	animation-duration: 0.5s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@-webkit-keyframes color_change {
+	from { color: #FDF0F2; }
+	to { color: red; }
+}
+@-moz-keyframes color_change {
+	from { color: blue; }
+	to { color: red; }
+}
+@-ms-keyframes color_change {
+	from { color: blue; }
+	to { color: red; }
+}
+@-o-keyframes color_change {
+	from { color: blue; }
+	to { color: red; }
+}
+@keyframes color_change {
+	from { color: #FDF0F2; }
+	to { color: #F9B0BD; }
+}
