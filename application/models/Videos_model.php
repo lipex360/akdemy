@@ -73,4 +73,20 @@
 			return $this->db->get();
 		}
 
+
+
+		public function setViews($usuario_id, $video_id, $new = NULL){
+			if($new != NULL){
+				$data['views'] = $new + 1;
+				$this->db->where('usuario_id', $usuario_id);
+				$this->db->where('video_id', $video_id);
+				$this->db->update('usuarios_videos', $data);
+			}else{
+				$data['views'] = 1;
+				$data['usuario_id'] = $usuario_id;
+				$data['video_id'] = $video_id;
+				$this->db->insert('usuarios_videos', $data);
+			}
+		}
+
 	}
