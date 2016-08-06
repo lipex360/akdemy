@@ -32,6 +32,11 @@
 								$classe = "fa-star";
 								$title = "Remover dos Favoritos";
 							break;
+
+							default:
+								$classe = "fa-star-o";
+								$title = "Adicionar aos Favoritos";
+							break;
 						}
 
 						switch ($video['status']) {
