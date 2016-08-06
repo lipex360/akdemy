@@ -1,7 +1,7 @@
 <div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 <!-- Vídeos da Trilha  -->
 
-<form action="<?= base_url('adm_trilha/alterar'); ?>" method="post">
+<form action="<?= base_url('adm_trilha/editar/'.$this->uri->segment(3)); ?>" method="post">
 	<input type="hidden" name="trilha_id" value="<?= $trilha['id']; ?>" id="">
 	<div class="row">
 		<div class="col-md-12">

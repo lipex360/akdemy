@@ -52,7 +52,7 @@ class Adm_trilha extends CI_Controller {
 				$setTrilha = $this->trilhas->cadastrar($data);
 				
 				if($setTrilha){
-					$alerta['mensagem'] = "Trilha {$data['titulo']} cadastrada com sucesso! <b><a href='editar/$setTrilha'>Clique Aqui</a></b> para configurá-la";
+					$alerta['mensagem'] = "Trilha <b>{$data['titulo']}</b> cadastrada com sucesso! <b><a href='editar/$setTrilha'>Clique Aqui</a></b> para configurá-la";
 					$alerta['classe'] = 'success';
 				}else{
 					$alerta['mensagem'] = "Erro ao cadastrar a trilha";
@@ -74,11 +74,35 @@ class Adm_trilha extends CI_Controller {
 
 	public function editar($trilha_id){
 		$view['menu'] = $this->getMenu();
+		$usuario_id = $_SESSION['usuario']['id'];
+
+		if($this->input->post('action') == 'set_trilha'){
+
+			$this->form_validation->set_rules('titulo', 'TITULO', 'trim|required');
+			$this->form_validation->set_rules('descricao', 'DESCRIÇÃO', 'trim|required');
+
+			if($this->form_validation->run()){
+				$data['titulo'] = $action = $this->input->post('titulo', true);
+				$data['descricao'] = $action = $this->input->post('descricao', true);
+				$data['tutor_id'] = $usuario_id;
+
+				$setTrilha = $this->trilhas->alterar($trilha_id, $data);
+
+				if($setTrilha){
+					$alerta['mensagem'] = "Trilha <b>{$data['titulo']}</b> Alterada com sucesso!";
+					$alerta['classe'] = 'success';
+				}else{
+					$alerta['mensagem'] = "Erro ao Alterar a Trilha";
+					$alerta['classe'] = 'danger';
+				}
+			}
+
+		}
+		if(isset($alerta)){$view['alerta'] = $alerta;}
 
 		$trilhas = $this->trilhas->trilhas($trilha_id);
 		$qTrilha = $trilhas->result();
 		
-
 		// DADOS DA TRILHA
 		$view['trilha'] = array(
 			'id' => $qTrilha[0]->id,

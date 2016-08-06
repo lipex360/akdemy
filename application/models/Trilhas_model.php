@@ -17,6 +17,15 @@
 			return $this->db->insert_id();
 		}
 
+		public function alterar($trilha_id, array $data){
+			$this->db->where('id', $trilha_id);
+			if($this->db->update('trilhas', $data)){
+				return $trilha_id;
+			}else{
+				return false;
+			}
+		}
+
 		public function usuarios_trilhas($usuario_id, $tutor_id){
 			$this->db->from('usuarios_trilhas');
 			$this->db->where('usuario_id', $usuario_id);

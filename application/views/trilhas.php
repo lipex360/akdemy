@@ -18,7 +18,7 @@
 
 	<div class="row margin-top-10">
 		<div class="col-md-12">
-			<?= $trilha->descricao; ?>
+			<?= nl2br($trilha->descricao); ?>
 		</div>
 	</div>
 </div>
