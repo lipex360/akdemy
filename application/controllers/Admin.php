@@ -15,22 +15,22 @@ class Admin extends CI_Controller {
 	
 	public function trilha()
 	{
-		$view = array();
-		// var_dump($_SESSION['usuario']);
-		extract($_SESSION['usuario']);
+		$usuario_id = $_SESSION['usuario']['id'];
 
-		// MENU DE ACESSO
-		$menu = $this->usuario->menu($nivel_id);
-		if($menu){
-			$view['menu'] = $menu;
-		}
+		// TRILHAS ATIVAS
+		$view['trilhas'] = $this->trilhas->getTrilhasAtivas($usuario_id);
 
-		$view['trilhas'] = $this->trilhas->getTrilhasAtivas($id);
-
-		$this->load->view('admin_trilha', $view);
+		// MÓDULOS DA PÁGINA
+		$view['modulos'][] = 'f-adicionar-trilha';
+		$view['modulos'][] = 'tb-trilhas-admin';
+		$view['menu'] = $this->getMenu();
+		$this->load->view('admin', $view);
 	}
 
+
+
 	public function trilha_cadastrar(){
+
 		$usuario_id = $_SESSION['usuario']['id'];
 
 		$action = $this->input->post('action');
@@ -50,11 +50,28 @@ class Admin extends CI_Controller {
 			}
 		}
 		
+		if(isset($alerta)){$view['alerta'] = $alerta;}
+		$view['trilhas'] = $this->trilhas->getTrilhasAtivas($usuario_id);
+		$view['menu'] = $this->getMenu();
 
-		$trilhas = $this->trilhas->adm_trilha($usuario_id);
-		if(isset($alerta)){$trilhas['alerta'] = $alerta;}
-		
-		$this->load->view('trilha', $trilhas);
+		// MÓDULOS DA PÁGINA
+		$view['modulos'][] = 'f-adicionar-trilha';
+		$view['modulos'][] = 'tb-trilhas-admin';
+		$view['menu'] = $this->getMenu();
+		$this->load->view('admin', $view);
+	}
+
+	public function trilha_editar($trilha_id){
+		$view['menu'] = $this->getMenu();
+
+		// MÓDULOS DA PÁGINA
+		$view['modulos'][] = 'f-editar-trilha';
+		$this->load->view('admin', $view);
+	}
+
+	public function getMenu(){
+		extract($_SESSION['usuario']);
+		return $menu = $this->usuario->menu($nivel_id);
 	}
 
 }

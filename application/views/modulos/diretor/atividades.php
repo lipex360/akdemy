@@ -1,6 +1,7 @@
 <!-- Resumo de Atividades -->
+<div class="container shadow-grey bg-white border-radius padding-top-30 padding-bottom-50">
+
 <div class="row margin-top-10">
-  
   <div class="col-md-3">
     <div class="foto border-radius">
       <img src="<?= base_url('assets/images/blank_imagem.gif')?>" alt="Imagem de Apresentação">
@@ -17,13 +18,12 @@
     <div class="row">
       <div class="col-md-12 resumo">
         <h4 class="">Resumo de Atividades</h4>
-        <p><b>Último Acesso: </b><?= $ct_atividades['ultimo_acesso'] ?></p>
-        <p><b>Videos Assistidas: </b><?= $ct_atividades['videos_assistidos'] ?></p>
-        <p><b>Trilhas Indicadas: </b><?= $ct_atividades['tilhas_indicadas'] ?></p>
-        
+        <p><b>Último Acesso: </b><?= ultimo_acesso($_SESSION['usuario']['acesso']); ?></p>
+        <p><b>Trilhas Indicadas: </b><?= $trilhas_indicadas; ?></p>
       </div>
     </div>
   </div>
 
+</div>
 </div>
 <!-- ### Resumo de Atividades ### -->

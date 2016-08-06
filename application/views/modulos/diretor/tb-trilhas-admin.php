@@ -22,9 +22,9 @@
 					if($trilhas){
 						$i = 0;
 						foreach ($trilhas as $trilha) {
-						$link = base_url('admin/configurar_trilha/'.$trilha['id']);				
+						$link = base_url('admin/trilha_editar/'.$trilha['id']);				
 				 ?>
-				<tr class="linha-<?= $i; ?>">
+				<tr class="linha-<?= $i%2; ?>">
 					<td><a href="<?= $link; ?>" class="pink"><?= $trilha['titulo']?></a></td>
 					<td><a href="<?= $link; ?>" class="pink"><?= limitaTexto($trilha['descricao'], 120); ?></a></td>
 					<td class="text-center"><a href="<?= $link; ?>" class="pink"><?= $trilha['nVideos']?></a></td>

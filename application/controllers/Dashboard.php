@@ -10,21 +10,16 @@ class Dashboard extends CI_Controller {
     }
 
 	public function index(){
-		$view = array();
-		// var_dump($_SESSION['usuario']);
 		extract($_SESSION['usuario']);
-
-		// MENU DE ACESSO
-		$menu = $this->usuario->menu($nivel_id);
-		if($menu){
-			$view['menu'] = $menu;
-		} else {
-			$view['menu'] = NULL;
-		}
-
+		
 		//TRILHAS INDICADAS
 		$view['trilhas_indicadas'] = $this->getIndicadas($id, $tutor_id);
 		$view['tb_trilhas'] = $this->tb_trilhas_indicadas($id, $tutor_id);
+		$view['menu'] = $this->getMenu();
+		
+		// MÓDULOS DA PÁGINA
+		$view['modulos'][] = 'atividades';
+		$view['modulos'][] = 'tb-trilhas-indicadas';
 		$this->load->view('dashboard', $view);
 	}
 
@@ -61,6 +56,10 @@ class Dashboard extends CI_Controller {
 		return $tb_trilhas;
 	}
 	
+	public function getMenu(){
+		extract($_SESSION['usuario']);
+		return $menu = $this->usuario->menu($nivel_id);
+	}
  
 
 }

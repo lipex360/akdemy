@@ -3,8 +3,12 @@
   $path = 'modulos/diretor/';
 
   $this->load->view('header');
-  $this->load->view($path.'f-adicionar-trilha');
-  $this->load->view($path.'tb-trilhas-admin'); 
+
+  foreach ($modulos as $modulo) {
+    $modulo = $path.$modulo;
+    $this->load->view($modulo);;
+  }
+    
   $this->load->view('rodape');
-   
+
 ?>

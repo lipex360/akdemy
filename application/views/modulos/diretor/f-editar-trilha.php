@@ -12,7 +12,7 @@
 
 	<div class="row margin-top-30">
 		<div class="col-md-12">
-			<p><i class="fa fa-plus margin-right-5" aria-hidden="true"></i>Adicionar Nova Trilha</p>
+			<p><i class="fa fa-plus margin-right-5" aria-hidden="true"></i>Editar Trilha Trilha</p>
 		</div>
 	</div>
 
@@ -30,7 +30,7 @@
 
 	<div class="row margin-top-10">
 		<div class="col-md-2">
-			<button class="submit-sistem" name="action" value="cad_trilha">Adicionar Trilha</button>
+			<button class="submit-sistem" name="action" value="cad_trilha">Alterar Trilha</button>
 		</div>
 	</div>
 </form>

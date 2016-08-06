@@ -35,6 +35,15 @@ class Usuario_model extends CI_Model {
 		}
 	}
 
+	public function getNivelDiretorio($nivel_id){
+		$this->db->from('sis_niveis');
+		$this->db->where('id', $nivel_id);
+		$query = $this->db->get();
+		$query = $query->result();
+
+		return $query[0]->diretorio;
+	}
+
 	public function getAcesso($usuario_id){
 		$this->db->from('usuarios');
 		$this->db->where('id', $usuario_id);
