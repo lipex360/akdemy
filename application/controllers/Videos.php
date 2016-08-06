@@ -17,9 +17,6 @@ class Videos extends CI_Controller {
 
 		// MENU ESQUERDO
 		$view['menu'] = $this->getMenu();	
-
-		
-
 		$this->load->view('video', $view);
 	}
 

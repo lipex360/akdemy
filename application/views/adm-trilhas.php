@@ -8,7 +8,11 @@
 	<div class="row">
 		<div class="col-md-12">
 			<i class="fa fa-pencil-square-o tableTitle" aria-hidden="true"></i></i> <span><b>Editor de Trilhas</b></span>
-			<a href="javascript:history.back()" class="pull-right pink"><i class="fa fa-chevron-left margin-right-5" aria-hidden="true"></i></i>Voltar</a>
+      <?php 
+        if($this->uri->segment(2) != 'trilhas' && $this->uri->segment(2) != 'cadastrar'){ 
+      ?>
+			<a href="<?= base_url('adm_trilha/trilhas')?>" class="pull-right pink"><i class="fa fa-list-ul margin-right-5" aria-hidden="true"></i></i>Visualizar as Trilhas</a>
+      <?php } ?>
 		</div>
 	</div>
 </div>

@@ -12,6 +12,11 @@
 			return $this->db->get();
 		}
 
+		public function cadastrar(array $data){
+			$this->db->insert('trilhas', $data);
+			return $this->db->insert_id();
+		}
+
 		public function usuarios_trilhas($usuario_id, $tutor_id){
 			$this->db->from('usuarios_trilhas');
 			$this->db->where('usuario_id', $usuario_id);

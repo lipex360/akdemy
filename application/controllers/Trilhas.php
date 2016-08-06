@@ -80,7 +80,7 @@ class Trilhas extends CI_Controller {
 
 		return $tb_videos;
 	}
-
+	
 	public function video_favorito(){
 		$id = $_POST['videoId'];
 		echo $this->videos->setFavorito($id);

@@ -12,8 +12,13 @@ class Adm_trilha extends CI_Controller {
 		$this->load->model('Videos_model', 'videos');
 		$this->load->model('Trilha_model', 'trilhas');
 	}
+
+	public function getMenu(){
+		extract($_SESSION['usuario']);
+		return $menu = $this->usuario->menu($nivel_id);
+	}
 	
-	public function trilha()
+	public function trilhas()
 	{
 		$usuario_id = $_SESSION['usuario']['id'];
 
@@ -22,14 +27,14 @@ class Adm_trilha extends CI_Controller {
 
 		// MÓDULOS DA PÁGINA
 		$view['modulos'][] = 'adm-trilha-adicionar';
-		$view['modulos'][] = 'tb-trilhas-admin';
+		$view['modulos'][] = 'tb-trilhas-configuradas';
 		$view['menu'] = $this->getMenu();
 		$this->load->view('adm-trilhas', $view);
 	}
 
 
 
-	public function trilha_cadastrar(){
+	public function cadastrar(){
 
 		$usuario_id = $_SESSION['usuario']['id'];
 
@@ -44,9 +49,15 @@ class Adm_trilha extends CI_Controller {
 				$data['descricao'] = $action = $this->input->post('descricao', true);
 				$data['tutor_id'] = $usuario_id;
 
-				$insert = $this->db->insert('trilhas', $data);
-				$alerta['mensagem'] = "Trilha {$data['titulo']} cadastrada com sucesso! <b><a href='' >Clique Aqui</a></b> para configurá-la";
-				$alerta['classe'] = 'success';
+				$setTrilha = $this->trilhas->cadastrar($data);
+				
+				if($setTrilha){
+					$alerta['mensagem'] = "Trilha {$data['titulo']} cadastrada com sucesso! <b><a href='editar/$setTrilha'>Clique Aqui</a></b> para configurá-la";
+					$alerta['classe'] = 'success';
+				}else{
+					$alerta['mensagem'] = "Erro ao cadastrar a trilha";
+					$alerta['classe'] = 'danger';
+				}
 			}
 		}
 		
@@ -56,22 +67,29 @@ class Adm_trilha extends CI_Controller {
 
 		// MÓDULOS DA PÁGINA
 		$view['modulos'][] = 'adm-trilha-adicionar';
-		$view['modulos'][] = 'tb-trilhas-admin';
+		$view['modulos'][] = 'tb-trilhas-configuradas';
 		$view['menu'] = $this->getMenu();
 		$this->load->view('adm-trilhas', $view);
 	}
 
-	public function trilha_editar($trilha_id){
+	public function editar($trilha_id){
 		$view['menu'] = $this->getMenu();
 
+		$trilhas = $this->trilhas->trilhas($trilha_id);
+		$qTrilha = $trilhas->result();
+		
+
+		// DADOS DA TRILHA
+		$view['trilha'] = array(
+			'id' => $qTrilha[0]->id,
+			'titulo' => $qTrilha[0]->titulo,
+			'descricao' => $qTrilha[0]->descricao,
+			'status' => $qTrilha[0]->status
+		);
+		
 		// MÓDULOS DA PÁGINA
 		$view['modulos'][] = 'adm-trilha-editar';
 		$this->load->view('adm-trilhas', $view);
-	}
-
-	public function getMenu(){
-		extract($_SESSION['usuario']);
-		return $menu = $this->usuario->menu($nivel_id);
 	}
 
 }

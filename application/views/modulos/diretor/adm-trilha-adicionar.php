@@ -1,7 +1,7 @@
 <div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 
 <!-- Vídeos da Trilha  -->
-<form action="<?= base_url('admin/trilha_cadastrar'); ?>" method="post">
+<form action="<?= base_url('adm_trilha/cadastrar'); ?>" method="post">
 
 	<div class="row">
 		<div class="col-md-12">
@@ -9,15 +9,17 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row margin-top-10">
 		<div class="col-md-5">
-			<input type="text" name="titulo" class="input-sistem" placeholder="Título da Trilha" required="required">
+			<label for="">Título da Trilha</label>
+			<input type="text" name="titulo" class="input-sistem" placeholder="Detalhe o Título da Trilha" required="required">
 		</div>
 	</div>
 
 	<div class="row margin-top-10">
 		<div class="col-md-12">
-			<textarea name="descricao" class="input-sistem" style="min-height:150px" placeholder="Descrição da Trilha" required="required"></textarea>
+			<label for="">Descrição da Trilha</label>
+			<textarea name="descricao" class="input-sistem" style="min-height:150px" placeholder="Descreva as informações da Trilha" required="required"></textarea>
 		</div>
 	</div>
 
