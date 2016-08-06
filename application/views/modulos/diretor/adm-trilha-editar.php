@@ -1,11 +1,10 @@
-<div class="container shadow-grey bg-white border-radius padding-top-30 padding-bottom-50">
-
+<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 <!-- Vídeos da Trilha  -->
 <form action="<?= base_url('admin/trilha_cadastrar'); ?>" method="post">
-
-	<div class="row margin-top-30">
+	
+	<div class="row">
 		<div class="col-md-12">
-			<p><i class="fa fa-plus margin-right-5" aria-hidden="true"></i>Adicionar Nova Trilha</p>
+			<i class="fa fa-pencil pull-left margin-top-5"  aria-hidden="true"></i><p class="float-left margin-top-2 margin-left-3">Editar Dados da Trilha</p>
 		</div>
 	</div>
 
@@ -23,7 +22,7 @@
 
 	<div class="row margin-top-10">
 		<div class="col-md-2">
-			<button class="submit-sistem" name="action" value="cad_trilha">Adicionar Trilha</button>
+			<button class="submit-sistem" name="action" value="cad_trilha">Alterar Trilha</button>
 		</div>
 	</div>
 </form>

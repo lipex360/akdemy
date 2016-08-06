@@ -1,8 +1,8 @@
 <!-- Favoritos -->
-<div class="container shadow-grey margin-top-10 bg-white border-radius padding-top-30 padding-bottom-50">
+<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 <div class="row">
 	<div class="col-md-12">
-		<i class="fa fa-th-list tableTitle"  aria-hidden="true"></i><p class="float-left margin-top-3 margin-left-5">Trilhas Configuradas</p>
+		<i class="fa fa-list-ul pull-left margin-top-5"  aria-hidden="true"></i><p class="float-left margin-top-2 margin-left-3">Trilhas Configuradas</p>
 	</div>
 </div>
 
