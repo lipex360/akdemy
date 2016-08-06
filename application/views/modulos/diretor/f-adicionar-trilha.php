@@ -2,13 +2,6 @@
 
 <!-- Vídeos da Trilha  -->
 <form action="<?= base_url('admin/trilha_cadastrar'); ?>" method="post">
-	
-	<div class="row">
-		<div class="col-md-12">
-			<i class="fa fa-pencil-square-o tableTitle" aria-hidden="true"></i></i> <span><b>Editor de Trilhas</b></span>
-			<a href="javascript:history.back()" class="pull-right pink"><i class="fa fa-chevron-left margin-right-5" aria-hidden="true"></i></i>Voltar</a>
-		</div>
-	</div>
 
 	<div class="row margin-top-30">
 		<div class="col-md-12">

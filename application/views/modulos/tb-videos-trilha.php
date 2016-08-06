@@ -1,7 +1,11 @@
 <div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-20 margin-top-10">
 	<div class="row">
 		<div class="col-md-12">
-			
+			<img src="<?= base_url('assets/images/play.gif')?>" alt="Vídeos da Trilha"> <span>Vídeos da Trilha</span>
+		</div>
+	</div>
+	<div class="row margin-top-10">
+		<div class="col-md-12">			
 			<table>
 				<thead>
 					<tr>
@@ -39,6 +43,11 @@
 							case 2:
 								$sTitle = 'Atividade Concluída';
 								$iClass = "fa fa-check-circle";
+							break;
+
+							default:
+								$sTitle = 'Atividade Não Concluída';
+								$iClass = "fa fa-circle-thin";
 							break;
 						}
 

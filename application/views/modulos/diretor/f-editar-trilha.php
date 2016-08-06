@@ -12,7 +12,7 @@
 
 	<div class="row margin-top-30">
 		<div class="col-md-12">
-			<p><i class="fa fa-plus margin-right-5" aria-hidden="true"></i>Editar Trilha Trilha</p>
+			<p><i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>Editar Dados da Trilha</p>
 		</div>
 	</div>
 

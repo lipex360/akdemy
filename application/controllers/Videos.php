@@ -11,17 +11,14 @@ class Videos extends CI_Controller {
 	}
 
 	public function view($video_id){
-		$view = array();
-		// var_dump($_SESSION['usuario']);
+	
 		extract($_SESSION['usuario']);
-
-		// MENU DE ACESSO
-		$menu = $this->usuario->menu($nivel_id);
-		if($menu){
-			$view['menu'] = $menu;
-		}
-
 		$this->setViews($id, $video_id);
+
+		// MENU ESQUERDO
+		$view['menu'] = $this->getMenu();	
+
+		
 
 		$this->load->view('video', $view);
 	}
@@ -42,6 +39,11 @@ class Videos extends CI_Controller {
 				$this->videos->setViews($id, $video_id);
 			}
 		}
+	}
+
+	public function getMenu(){
+		extract($_SESSION['usuario']);
+		return $menu = $this->usuario->menu($nivel_id);
 	}
 
 

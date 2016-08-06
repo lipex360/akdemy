@@ -24,7 +24,7 @@
 </div>
 
 <?php 
-	$this->load->view('modulos/tb-videos-trilha') 
+	$this->load->view('modulos/tb-videos-trilha');
 	$this->load->view('modulos/comentarios');
 	$this->load->view('rodape'); 
 ?>
