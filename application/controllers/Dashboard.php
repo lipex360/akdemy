@@ -18,12 +18,13 @@ class Dashboard extends CI_Controller {
 		$menu = $this->usuario->menu($nivel_id);
 		if($menu){
 			$view['menu'] = $menu;
+		} else {
+			$view['menu'] = NULL;
 		}
 
 		//TRILHAS INDICADAS
 		$view['trilhas_indicadas'] = $this->getIndicadas($id, $tutor_id);
 		$view['tb_trilhas'] = $this->tb_trilhas_indicadas($id, $tutor_id);
-
 		$this->load->view('dashboard', $view);
 	}
 

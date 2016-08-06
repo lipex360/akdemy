@@ -18,5 +18,36 @@
 			$this->db->where('tutor_id', $tutor_id);
 			return $this->db->get();
 		}
+
+
+		public function getTrilhasAtivas($tutor_id){
+			$this->db->from('trilhas');
+			$this->db->where('tutor_id', $tutor_id);
+			$this->db->where('status !=', 0);
+
+			$query = $this->db->get();
+			$rTrilhas = $query->result();
+			$nTrilhas = $query->num_rows();
+
+			if($nTrilhas){
+				
+				foreach ($rTrilhas as $trilhas) {
+					$qVideos = $this->videos->videos_trilha($trilhas->id);
+					$nVideos = $qVideos->num_rows();
+					$data[] = array(
+						'id' => $trilhas->id,
+						'titulo' => $trilhas->titulo,
+						'descricao' => $trilhas->descricao,
+						'nVideos' => $nVideos
+						);
+					
+				}
+				return $data;
+			}else{
+				return null;
+			}
+		}
+	
+
 	}
  ?>

@@ -1,5 +1,6 @@
 <!-- Favoritos -->
-<div class="row margin-top-50">
+<div class="container shadow-grey margin-top-10 bg-white border-radius padding-top-30 padding-bottom-50">
+<div class="row">
 	<div class="col-md-12">
 		<i class="fa fa-th-list tableTitle"  aria-hidden="true"></i><p class="float-left margin-top-3 margin-left-5">Trilhas Configuradas</p>
 	</div>
@@ -18,32 +19,25 @@
 			</thead>
 			<tbody>
 				<?php
-					if($num_rows == 0){
-				?>
-
-				<tr class="linha-0">
-					<td colspan=4 class="text-center">Nenhuma Trilha Cadastrada</td>
+					if($trilhas){
+						$i = 0;
+						foreach ($trilhas as $trilha) {
+						$link = base_url('admin/configurar_trilha/'.$trilha['id']);				
+				 ?>
+				<tr class="linha-<?= $i; ?>">
+					<td><a href="<?= $link; ?>" class="pink"><?= $trilha['titulo']?></a></td>
+					<td><a href="<?= $link; ?>" class="pink"><?= limitaTexto($trilha['descricao'], 120); ?></a></td>
+					<td class="text-center"><a href="<?= $link; ?>" class="pink"><?= $trilha['nVideos']?></a></td>
+					<td class="text-center"><a href="<?= $link; ?>" class="pink" title="Editar Trilha"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
 				</tr>
-
-				<?php
-
-					} else {
-					$i = 0;
-
-
-					foreach ($result as $trilha) {
-					$bgref = $i%2;            
-				?>
-					<tr class="linha-<?= $bgref ?>">
-						<td><a href="" class="pink"><?= $trilha->titulo; ?></a></td>
-						<td><a href="" class="pink"><?= limitaTexto($trilha->descricao, 130); ?></a></td>
-						<td class="text-center"><a href="" class="pink">05</a></td>
-						<td class="text-center"><a href="" class="pink" title="Editar Trilha"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-					</tr>
-				<?php $i++;}} ?>
-
+				<?php $i++; }} else { ?>
+				<tr class="linha-0">
+					<td colspan = '4' class="text-center">Nenhuma Trilha Cadastrada</td>
+				</tr>
+				<?php }?>
 			</tbody>
 		</table>
 	</div>
+</div>
 </div>
 <!-- ### Favoritos ### -->

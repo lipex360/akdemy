@@ -42,8 +42,6 @@ class Trilhas extends CI_Controller {
 	}
 
 
-
-
 	public function tb_videos($usuario_id, $trilha_id){
 		$videos = $this->videos->videos_trilha($trilha_id);
 		$rVideos = $videos->result();

@@ -53,16 +53,17 @@
 							</a>
 						</li>
 						
-						<?php foreach ($menu as $linkmenu) {
-						?>
+						<?php 
+							if($menu){
+						foreach ($menu as $linkmenu) { ?>
 
 						<li>
-							<a href="<?= base_url('painel'); ?>" title="<?= $linkmenu->titulo ?>">
+							<a href="<?= base_url($linkmenu->link); ?>" title="<?= $linkmenu->titulo ?>">
 								<i class="<?= $linkmenu->classe ?>" style="font-size:20px !important" aria-hidden="true"></i>
 							</a>
 						</li>
 
-						<?php } ?>
+						<?php }} ?>
 
 
 					</ul>

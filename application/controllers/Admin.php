@@ -15,10 +15,19 @@ class Admin extends CI_Controller {
 	
 	public function trilha()
 	{
-		$usuario_id = $_SESSION['usuario']['id'];
+		$view = array();
+		// var_dump($_SESSION['usuario']);
+		extract($_SESSION['usuario']);
 
-		$trilhas = $this->trilhas->adm_trilha($usuario_id);
-		$this->load->view('admin_trilha', $trilhas);
+		// MENU DE ACESSO
+		$menu = $this->usuario->menu($nivel_id);
+		if($menu){
+			$view['menu'] = $menu;
+		}
+
+		$view['trilhas'] = $this->trilhas->getTrilhasAtivas($id);
+
+		$this->load->view('admin_trilha', $view);
 	}
 
 	public function trilha_cadastrar(){
@@ -45,7 +54,7 @@ class Admin extends CI_Controller {
 		$trilhas = $this->trilhas->adm_trilha($usuario_id);
 		if(isset($alerta)){$trilhas['alerta'] = $alerta;}
 		
-		$this->load->view('admin_trilha', $trilhas);
+		$this->load->view('trilha', $trilhas);
 	}
 
 }
