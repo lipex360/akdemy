@@ -40,5 +40,18 @@ $(function(){
 				alink.prop("title", "Remover dos Favoritos");
 			}
 		})
+	});
+
+	$('.trasmissao').change(function(){
+		var valor = $(this).val();
+		if(valor == 0){
+			if($('#transmissao').is(':visible')){
+				$("#transmissao").toggle('slow');
+			}
+			$('.required').removeAttr('required');
+		} else {
+			$("#transmissao").toggle('slow');
+			$('.required').attr('required','required');
+		}
 	})
 })

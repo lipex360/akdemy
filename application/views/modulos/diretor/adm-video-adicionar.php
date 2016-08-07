@@ -24,8 +24,8 @@
 
 		<div class="row margin-top-10">
 			<div class="col-md-2">
-				<label for="">Transmissão ao vivo?</label>
-				<select name="" id="" class="input-sistem">
+				<label for="set_video">Transmissão ao vivo?</label>
+				<select name="trasmissao" id="set_video" class="input-sistem trasmissao">
 					<option value="">Selecione</option>
 					<option value="1">Sim</option>
 					<option value="0">Não</option>
@@ -33,15 +33,15 @@
 			</div>
 		</div>
 		
-		<div class="transmissao">
+		<div id="transmissao" class="display-none">
 			<div class="row margin-top-10">
 				<div class="col-md-2">
 					<label for="">Data</label>
-					<input type="date" id="datepicker" name="data" class="input-sistem" placeholder="" required="required">
+					<input type="date" id="datepicker" name="data" class="input-sistem required">
 				</div>
-				<div class="col-md-1">
-					<label for="">Hora</label>
-					<input type="text" name="hora" class="input-sistem horas" >
+				<div class="col-md-2">
+					<label for="">Hora (24h)</label>
+					<input type="text" name="hora" class="input-sistem horas required">
 				</div>
 			</div>
 		</div>
