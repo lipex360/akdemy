@@ -1,6 +1,6 @@
 <div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 
-	<form action="<?= base_url('adm_video/cadastrar'); ?>" method="post">
+	<form action="<?= base_url('adm_videos/cadastrar'); ?>" method="post">
 
 		<div class="row">
 			<div class="col-md-12">
@@ -23,11 +23,29 @@
 		</div>
 
 		<div class="row margin-top-10">
-			<div class="col-md-5">
-				<label for="">Transmissão Ao Vivo</label>
-				<input type="text" name="link" class="input-sistem" placeholder="Copie e cole aqui o Link do Youtube" required="required">
+			<div class="col-md-2">
+				<label for="">Transmissão ao vivo?</label>
+				<select name="" id="" class="input-sistem">
+					<option value="">Selecione</option>
+					<option value="1">Sim</option>
+					<option value="0">Não</option>
+				</select>
 			</div>
 		</div>
+		
+		<div class="transmissao">
+			<div class="row margin-top-10">
+				<div class="col-md-2">
+					<label for="">Data</label>
+					<input type="date" id="datepicker" name="data" class="input-sistem" placeholder="" required="required">
+				</div>
+				<div class="col-md-1">
+					<label for="">Hora</label>
+					<input type="text" name="hora" class="input-sistem horas" >
+				</div>
+			</div>
+		</div>
+		
 
 		<div class="row margin-top-10">
 			<div class="col-md-12">

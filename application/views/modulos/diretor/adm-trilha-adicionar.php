@@ -1,7 +1,7 @@
 <div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 
 <!-- Vídeos da Trilha  -->
-<form action="<?= base_url('adm_trilha/cadastrar'); ?>" method="post">
+<form action="<?= base_url('adm_trilhas/cadastrar'); ?>" method="post">
 
 	<div class="row">
 		<div class="col-md-12">
