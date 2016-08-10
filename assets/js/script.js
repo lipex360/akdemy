@@ -42,7 +42,7 @@ $(function(){
 		})
 	});
 
-	$('.trasmissao').change(function(){
+	$('.transmissao').change(function(){
 		var valor = $(this).val();
 		if(valor == 0){
 			if($('#transmissao').is(':visible')){

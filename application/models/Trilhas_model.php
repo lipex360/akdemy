@@ -12,6 +12,15 @@
 			return $this->db->get();
 		}
 
+		public function tutor_trilhas($tutor_id, $status = NULL){
+			$this->db->from('trilhas');
+			$this->db->where('tutor_id', $tutor_id);
+			if(!is_null($status)){
+				$this->db->where('status', $status);	
+			}
+			return $this->db->get();
+		}
+
 		public function cadastrar(array $data){
 			$this->db->insert('trilhas', $data);
 			return $this->db->insert_id();

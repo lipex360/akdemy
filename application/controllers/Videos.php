@@ -20,8 +20,6 @@ class Videos extends CI_Controller {
 		$this->load->view('video', $view);
 	}
 
-
-
 	// Seta Visualizações
 	public function setViews($id, $video_id){
 		if(is_null(get_cookie('view_cookie'))){

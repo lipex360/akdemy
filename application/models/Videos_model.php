@@ -12,6 +12,11 @@
 			return $this->db->get();
 		}
 
+		public function inserir(array $input){
+			$this->db->insert('videos', $input);
+			return $this->db->insert_id();
+		}
+
 		public function videos_trilha($trilha_id){
 			$this->db->from('videos');
 			$this->db->where('trilha_id', $trilha_id);
