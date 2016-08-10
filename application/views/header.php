@@ -8,11 +8,11 @@
 		<title>Akdemy - <?= ucfirst($this->uri->segment('1'))?></title>
 
 		<!-- Bootstrap -->
-		<link href="<?= base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet">
-		<link href="<?= base_url('assets/css/base.css')?>" rel="stylesheet">
-		<link href="<?= base_url('assets/css/style.css')?>" rel="stylesheet">
-		<link href="<?= base_url('assets/font-aw/css/font-awesome.min.css')?>" rel="stylesheet">
-
+		<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet">
+		<link rel="stylesheet" href="<?= base_url('assets/css/base.css')?>" rel="stylesheet">
+		<link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>" rel="stylesheet">
+		<link rel="stylesheet" href="<?= base_url('assets/font-aw/css/font-awesome.min.css')?>" rel="stylesheet">
+		<link rel="stylesheet" href="<?= base_url('assets/js/jqueryui/jquery-ui.min.css') ?>">
 		<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -53,16 +53,17 @@
 							</a>
 						</li>
 						
-						<?php foreach ($menu as $linkmenu) {
-						?>
+						<?php 
+							if($menu){
+						foreach ($menu as $linkmenu) { ?>
 
 						<li>
-							<a href="<?= base_url('painel'); ?>" title="<?= $linkmenu->titulo ?>">
+							<a href="<?= base_url($linkmenu->link); ?>" title="<?= $linkmenu->titulo ?>">
 								<i class="<?= $linkmenu->classe ?>" style="font-size:20px !important" aria-hidden="true"></i>
 							</a>
 						</li>
 
-						<?php } ?>
+						<?php }} ?>
 
 
 					</ul>

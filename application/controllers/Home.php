@@ -41,6 +41,7 @@ class Home extends CI_Controller {
 							$_SESSION['usuario'][$key] = $value;
 						}
 
+						// Último Acesso
 						if(is_null($retorno->acesso)){
 							$_SESSION['usuario']['acesso'] = date('Y-m-d H:i:s');
 							$this->usuario->setAcesso($_SESSION['usuario']['id']);
@@ -49,6 +50,9 @@ class Home extends CI_Controller {
 							$_SESSION['usuario']['acesso'] = $acesso;
 							$this->usuario->setAcesso($_SESSION['usuario']['id']);
 						}
+
+						// Diretório Nível
+						$_SESSION['usuario']['pathNivel'] = $this->usuario->getNivelDiretorio($_SESSION['usuario']['nivel_id']);
 
 						unset($_SESSION['usuario']['datacad']);
 						unset($_SESSION['usuario']['senha']);

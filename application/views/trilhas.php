@@ -4,7 +4,7 @@
 ?>
 
 <!-- Centro -->
-<div class="container shadow-grey bg-white border-radius padding-top-30 padding-bottom-50">
+<div class="container shadow-grey bg-white border-radius padding-top-30 padding-bottom-30">
 
 	<!-- Vídeos da Trilha  -->
 	<div class="row">
@@ -18,21 +18,13 @@
 
 	<div class="row margin-top-10">
 		<div class="col-md-12">
-			<?= $trilha->descricao; ?>
+			<?= nl2br($trilha->descricao); ?>
 		</div>
 	</div>
-
-	<div class="row margin-top-20">
-		<div class="col-md-12">
-			<?php $this->load->view('modulos/consultor/tb-videos-trilha') ?>
-		</div>
-	</div>
-	
-	<!-- ### Vídeos da Trilha ### -->
-
 </div>
-<!-- ### Centro ### -->
+
 <?php 
+	$this->load->view('modulos/tb-videos-trilha');
 	$this->load->view('modulos/comentarios');
 	$this->load->view('rodape'); 
 ?>

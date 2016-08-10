@@ -19,15 +19,7 @@ class Trilhas extends CI_Controller {
 
 	public function percurso($trilha_id)
 	{
-		$view = array();
-		// var_dump($_SESSION['usuario']);
 		extract($_SESSION['usuario']);
-
-		// MENU DE ACESSO
-		$menu = $this->usuario->menu($nivel_id);
-		if($menu){
-			$view['menu'] = $menu;
-		}
 
 		// DADOS DA TRILHA
 		$trilhas = $this->trilhas->trilhas($trilha_id);
@@ -38,10 +30,15 @@ class Trilhas extends CI_Controller {
 		$videos = $this->tb_videos($id, $trilha_id);
 		$view['videos'] = $videos;
 
-		$this->load->view('percurso', $view);
+		// MODULOS DA PÁGINA
+		$view['modulos'][] = 'f-adicionar-trilha';
+		$view['modulos'][] = 'tb-trilhas-admin';
+
+		// MENU ESQUERDO
+		$view['menu'] = $this->getMenu();	
+
+		$this->load->view('trilhas', $view);
 	}
-
-
 
 
 	public function tb_videos($usuario_id, $trilha_id){
@@ -83,11 +80,17 @@ class Trilhas extends CI_Controller {
 
 		return $tb_videos;
 	}
-
+	
 	public function video_favorito(){
 		$id = $_POST['videoId'];
 		echo $this->videos->setFavorito($id);
 	}
 
 
+	public function getMenu(){
+		extract($_SESSION['usuario']);
+		return $menu = $this->usuario->menu($nivel_id);
+	}
+
+		
 }

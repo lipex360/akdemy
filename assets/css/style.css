@@ -2,6 +2,7 @@
 body{background: #EFEFEF; color: #FF7979 !important;}
 textarea:focus{outline: none !important;}
 iframe{border:1px solid #FCDAE0;}
+label{font-weight: normal;}
 
 .menu i{color:#F9B0BD; font-size: 24px; font-weight: thin}
 .menu i:hover{color:#F791A3;}
