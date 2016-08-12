@@ -52,6 +52,7 @@ class Adm_videos extends CI_Controller {
 		// MÓDULOS DA PÁGINA
 		if(isset($alerta)){$view['alerta'] = $alerta;}
 		$view['modulos'][] = 'adm-video-adicionar';
+		$view['modulos'][] = 'tb-videos-configurados';
 		$view['menu'] = $this->getMenu();
 		$this->load->view('adm-videos', $view);
 	}
