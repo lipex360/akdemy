@@ -22,6 +22,19 @@ class Adm_trilhas extends CI_Controller {
 	{
 		$usuario_id = $_SESSION['usuario']['id'];
 
+
+		// TRILHAS ATIVAS
+		$view['trilhas'] = $this->trilhas->getTrilhasAtivas($usuario_id);
+
+		// MÓDULOS DA PÁGINA
+		$view['modulos'][] = 'tb-trilhas-configuradas';
+		$view['menu'] = $this->getMenu();
+		$this->load->view('adm-trilhas', $view);
+	}
+
+	public function adicionar(){
+		$usuario_id = $_SESSION['usuario']['id'];
+
 		$action = $this->input->post('action');
 
 		if($action === "cad_trilha"){
@@ -52,7 +65,6 @@ class Adm_trilhas extends CI_Controller {
 
 		// MÓDULOS DA PÁGINA
 		$view['modulos'][] = 'adm-trilha-adicionar';
-		$view['modulos'][] = 'tb-trilhas-configuradas';
 		$view['menu'] = $this->getMenu();
 		$this->load->view('adm-trilhas', $view);
 	}

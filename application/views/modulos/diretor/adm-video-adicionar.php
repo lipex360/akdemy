@@ -26,7 +26,7 @@
 					?>
 					<option value="<?= $trilha->id?>"><?= $trilha->titulo?></option>
 					<?php }} else {?>
-						<option value="">Nenhuma Trilha Configurada</option>
+						<option value="" disabled>Nenhuma Trilha Configurada</option>
 					<?php } ?>
 				</select>
 			</div>

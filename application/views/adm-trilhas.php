@@ -11,8 +11,10 @@
       <?php 
         if($this->uri->segment(2) != 'trilhas' && $this->uri->segment(2) != 'cadastrar'){ 
       ?>
-			<a href="<?= base_url('adm_trilhas/trilhas')?>" class="pull-right pink"><i class="fa fa-list-ul margin-right-5" aria-hidden="true"></i></i>Visualizar as Trilhas</a>
-      <?php } ?>
+			  <a href="<?= base_url('adm_trilhas/trilhas')?>" class="pull-right pink"><i class="fa fa-list-ul margin-right-5" aria-hidden="true"></i></i>Visualizar Trilhas Configuradas</a>
+      <?php } else {?>
+        <a href="<?= base_url('adm_trilhas/adicionar')?>" class="pull-right pink"><i class="fa fa-plus margin-right-5" aria-hidden="true"></i></i>Adicionar Nova Trilha</a>
+      <?php }?>
 		</div>
 	</div>
 </div>
