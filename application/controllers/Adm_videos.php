@@ -22,11 +22,25 @@ class Adm_videos extends CI_Controller {
 	{
 		$usuario_id = $_SESSION['usuario']['id'];
 		
+		// MÓDULOS DA PÁGINA
+		
+		// TB VIDEOS CONFIGURADOS
+		$view['videosConfigurados'] = $this->getVideosConfigurados($usuario_id);
+		$view['modulos'][] = 'tb-videos-configurados';
+
+
+		$view['menu'] = $this->getMenu();
+		$this->load->view('adm-videos', $view);
+	}
+
+	public function adicionar(){
+		$usuario_id = $_SESSION['usuario']['id'];
+		
 		// TRILHAS DISPONÍVEIS
 		$trilhas = $this->trilhas->tutor_trilhas($usuario_id);
 		$qTrilhas = $trilhas->result();
 		$view['trilhas'] = $qTrilhas;
-		
+
 		// CADASTRAR NOVO VÍDEO
 		$action = $this->input->post('action');
 		if($action === "cad_video"){
@@ -41,20 +55,43 @@ class Adm_videos extends CI_Controller {
 			
 			$setVideo = $this->videos->inserir($form);
 			if($setVideo){
-				$alerta['mensagem'] = "Vídeo <b>{$form['titulo']}</b> cadastrada com sucesso! <b><a href='editar/$setVideo'>Clique Aqui</a></b> para configurá-lo";
+				$alerta['mensagem'] = "Vídeo <b>{$form['titulo']}</b> cadastrada com sucesso!<b>";
 				$alerta['classe'] = 'success';
 			}else{
-				$alerta['mensagem'] = "Erro ao cadastrar o Vídeo";
+				$alerta['mensagem'] = "Erro ao cadastrar o Vídeo! Uma mensagem automática foi enviada ao desenvolvedor!";
 				$alerta['classe'] = 'danger';
 			}
 		}
+		if(isset($alerta)){$view['alerta'] = $alerta;}
+
+		$view['modulos'][] = 'adm-video-adicionar';
+		$view['menu'] = $this->getMenu();
+		$this->load->view('adm-videos', $view);
+	}
+
+	public function editar($id){
+		$usuario_id = $_SESSION['usuario']['id'];
+
+		// TRILHAS DISPONÍVEIS
+		$trilhas = $this->trilhas->tutor_trilhas($usuario_id);
+		$qTrilhas = $trilhas->result();
+		$view['trilhas'] = $qTrilhas;
+
+		// TB VIDEOS CONFIGURADOS
+		$view['videosConfigurados'] = $this->getVideosConfigurados($usuario_id);
 
 		// MÓDULOS DA PÁGINA
 		if(isset($alerta)){$view['alerta'] = $alerta;}
-		$view['modulos'][] = 'adm-video-adicionar';
-		$view['modulos'][] = 'tb-videos-configurados';
+		$view['modulos'][] = 'adm-video-editar';
+
 		$view['menu'] = $this->getMenu();
 		$this->load->view('adm-videos', $view);
+	}
+
+
+	public function getVideosConfigurados($tutor_id){
+		$videos = $this->videos->getVideosConfigurados($tutor_id, 1);
+		return $videos;
 	}
 
 }

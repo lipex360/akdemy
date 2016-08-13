@@ -1,7 +1,7 @@
 <div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 
-	<form action="<?= base_url('adm_videos/videos'); ?>" method="post">
-
+	<form action="<?= base_url('adm_videos/adicionar'); ?>" method="post">
+		
 		<div class="row">
 			<div class="col-md-12">
 				<i class="fa fa-plus pull-left margin-top-5"  aria-hidden="true"></i><p class="float-left margin-top-2 margin-left-3">Adicionar Novo Vídeos</p>
@@ -70,10 +70,10 @@
 			</div>
 			<div class="col-md-2">
 				<label for="">&nbsp;</label>
-				<select name="m-h" id="" class="input-sistem" required="">
+				<select name="mh" id="" class="input-sistem" required="">
 					<option value="">Selecione</option>
-					<option value="m">Minutos</option>
-					<option value="h">Horas</option>
+					<option value="min">Minutos</option>
+					<option value="hs">Horas</option>
 				</select>
 			</div>
 		</div>

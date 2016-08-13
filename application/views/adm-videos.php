@@ -11,8 +11,10 @@
       <?php 
         if($this->uri->segment(2) != 'videos' && $this->uri->segment(2) != 'cadastrar'){ 
       ?>
-			<a href="<?= base_url('adm_videos/videos')?>" class="pull-right pink"><i class="fa fa-list-ul margin-right-5" aria-hidden="true"></i></i>Visualizar os Vídeos</a>
-      <?php } ?>
+			  <a href="<?= base_url('adm_videos/videos')?>" class="pull-right pink"><i class="fa fa-list-ul margin-right-5" aria-hidden="true"></i></i>Visualizar Vídeos Configurados</a>
+      <?php } else {?>
+        <a href="<?= base_url('adm_videos/adicionar')?>" class="pull-right pink"><i class="fa fa-plus margin-right-5" aria-hidden="true"></i></i>Adicionar Novo Vídeo</a>
+      <?php }?>
 		</div>
 	</div>
 </div>

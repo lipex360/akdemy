@@ -6,8 +6,11 @@
 			parent::__construct();
 		}
 
-		public function videos($id){
+		public function videos($id, $status = NULL){
 			$this->db->from('videos');
+			if($status != NULL){
+				$this->db->where('status', $status);
+			}
 			$this->db->where('id', $id);
 			return $this->db->get();
 		}
@@ -52,6 +55,39 @@
 					return false;
 				}
 			}
+		}
+
+		// ADM VIDEO EDITAR
+		public function getVideo($id){
+
+		}
+
+		public function getVideosConfigurados($tutor_id, $status = NULL){
+			$this->db->from('videos');
+			if($status != NULL){
+				$this->db->where('status', $status);
+			}
+			$this->db->where('tutor_id', $tutor_id);
+			$query = $this->db->get();
+			$nVideos = $query->num_rows();
+			$rVideos = $query->result();
+
+			$data = array();
+			foreach ($rVideos as $videos) {
+				$trilhas = $this->trilhas->trilhas($videos->trilha_id);
+				$qTrilhas = $trilhas->result();
+
+				$data[] = array(
+					'id' => $videos->id,
+					'titulo' => $videos->titulo,
+					'resumo' => $videos->descricao,
+					'trilha' => $qTrilhas[0]->titulo,
+					'duracao' => $videos->duracao,
+					'mh' => $videos->mh
+				);
+			}
+
+			return $data;
 		}
 
 		public function getFavoritos($usuario_id, $video_id){
