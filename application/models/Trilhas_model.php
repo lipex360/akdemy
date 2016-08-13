@@ -12,12 +12,24 @@
 			return $this->db->get();
 		}
 
-		public function tutor_trilhas($tutor_id, $status = NULL){
+		public function tutor_trilhas($tutor_id, $trilha_id = NULL, $status = NULL){
 			$this->db->from('trilhas');
 			$this->db->where('tutor_id', $tutor_id);
+			if(!is_null($trilha_id)){
+				$this->db->where('id =', $trilha_id);
+			}
 			if(!is_null($status)){
 				$this->db->where('status', $status);	
 			}
+			return $this->db->get();
+		}
+
+		public function tutor_trilhas_edit($tutor_id, $trilha_id){
+			$this->db->from('trilhas');
+			$this->db->where('tutor_id', $tutor_id);
+			$this->db->where('id !=', $trilha_id);
+			$this->db->where('status', 1);
+			
 			return $this->db->get();
 		}
 

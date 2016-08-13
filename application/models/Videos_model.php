@@ -15,6 +15,15 @@
 			return $this->db->get();
 		}
 
+		public function editar($id, array $data){
+			$this->db->where('id', $id);
+			if($this->db->update('videos', $data)){
+				return $id;
+			}else{
+				return false;
+			}
+		}
+
 		public function inserir(array $input){
 			$this->db->insert('videos', $input);
 			return $this->db->insert_id();
@@ -59,7 +68,18 @@
 
 		// ADM VIDEO EDITAR
 		public function getVideo($id){
+			$this->db->from('videos');
+			$this->db->where('id', $id);
+			$query = $this->db->get();
+			$result = $query->result();
+			$video = $result[0];
 
+			$arEmbed = explode('/', $video->link);
+			$arLink = explode('?', $arEmbed[3]);
+			$arLinkv = explode('=', $arLink[1]);
+			$video->stream = $embed = $arLinkv[1];
+
+			return $video;
 		}
 
 		public function getVideosConfigurados($tutor_id, $status = NULL){

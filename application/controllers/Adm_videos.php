@@ -55,7 +55,7 @@ class Adm_videos extends CI_Controller {
 			
 			$setVideo = $this->videos->inserir($form);
 			if($setVideo){
-				$alerta['mensagem'] = "Vídeo <b>{$form['titulo']}</b> cadastrada com sucesso!<b>";
+				$alerta['mensagem'] = "Vídeo <b>{$form['titulo']}</b> cadastrada com sucesso!";
 				$alerta['classe'] = 'success';
 			}else{
 				$alerta['mensagem'] = "Erro ao cadastrar o Vídeo! Uma mensagem automática foi enviada ao desenvolvedor!";
@@ -72,13 +72,40 @@ class Adm_videos extends CI_Controller {
 	public function editar($id){
 		$usuario_id = $_SESSION['usuario']['id'];
 
+		if($this->input->post('action')==="editar"){
+			$form = $this->input->post();
+			unset($form['action']);
+			$form['tutor_id'] = $usuario_id;
+
+			$data = $form['data'];
+			if(!empty($data)){
+				$data = explode('/', $data);
+				$form['data'] = $data[2].'-'.$data[1].'-'.$data[0];
+			}
+
+			$setVideo = $this->videos->editar($id, $form);
+			if($setVideo){
+				$alerta['mensagem'] = "Vídeo <b>{$form['titulo']}</b> alterado com sucesso!";
+				$alerta['classe'] = 'success';
+			}else{
+				$alerta['mensagem'] = "Erro ao cadastrar o Vídeo! Uma mensagem automática foi enviada ao desenvolvedor!";
+				$alerta['classe'] = 'danger';
+			}
+		}
+
+		if(isset($alerta)){$view['alerta'] = $alerta;}
+		$view['video_editar'] = $this->videos->getVideo($id);
+
+		// TRILHA CONFIGURADA
+		$trilhas = $this->trilhas->tutor_trilhas($usuario_id, $view['video_editar']->trilha_id);
+		$qTrilhas = $trilhas->result();
+		$view['trilha_configurada'] = $qTrilhas;
+
 		// TRILHAS DISPONÍVEIS
-		$trilhas = $this->trilhas->tutor_trilhas($usuario_id);
+		$trilhas = $this->trilhas->tutor_trilhas_edit($usuario_id, $view['video_editar']->trilha_id);
 		$qTrilhas = $trilhas->result();
 		$view['trilhas'] = $qTrilhas;
 
-		// TB VIDEOS CONFIGURADOS
-		$view['videosConfigurados'] = $this->getVideosConfigurados($usuario_id);
 
 		// MÓDULOS DA PÁGINA
 		if(isset($alerta)){$view['alerta'] = $alerta;}
