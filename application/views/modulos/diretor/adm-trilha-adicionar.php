@@ -1,34 +1,52 @@
-<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
+<?php echo form_open_multipart(base_url('adm_trilhas/adicionar'));?>
+	<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 
-<!-- Vídeos da Trilha  -->
-<form action="<?= base_url('adm_trilhas/trilhas'); ?>" method="post">
+		<div class="row">
+			<div class="col-md-12">
+				<i class="fa fa-plus pull-left margin-top-5"  aria-hidden="true"></i><p class="float-left margin-top-2 margin-left-3">Adicionar Nova Trilha</p>
+			</div>
+		</div>
 
-	<div class="row">
-		<div class="col-md-12">
-			<i class="fa fa-plus pull-left margin-top-5"  aria-hidden="true"></i><p class="float-left margin-top-2 margin-left-3">Adicionar Nova Trilha</p>
+		<div class="row margin-top-10">
+			<div class="col-md-5">
+				<label for="">Título da Trilha</label>
+				<input type="text" name="titulo" class="input-sistem" placeholder="Detalhe o Título da Trilha" required="required">
+			</div>
+		</div>
+
+		<div class="row margin-top-10">
+			<div class="col-md-12">
+				<label for="">Descrição da Trilha</label>
+				<textarea name="descricao" class="input-sistem" style="min-height:150px" placeholder="Descreva as informações da Trilha" required="required"></textarea>
+			</div>
 		</div>
 	</div>
-
-	<div class="row margin-top-10">
-		<div class="col-md-5">
-			<label for="">Título da Trilha</label>
-			<input type="text" name="titulo" class="input-sistem" placeholder="Detalhe o Título da Trilha" required="required">
+	
+	<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
+		<div class="row">
+			<div class="col-md-12">
+				<i class="fa fa-cloud-upload pull-left margin-top-5"  aria-hidden="true"></i><p class="float-left margin-top-2 margin-left-3">Upload de Arquivos</p>
+			</div>
 		</div>
-	</div>
-
-	<div class="row margin-top-10">
-		<div class="col-md-12">
-			<label for="">Descrição da Trilha</label>
-			<textarea name="descricao" class="input-sistem" style="min-height:150px" placeholder="Descreva as informações da Trilha" required="required"></textarea>
+		<div class="row">
+			<div class="col-md-12">
+				<p><small>Arquivos adicionados diretamente à trilha não serão exibidos nos vídeos associados à trilha</small></p>
+			</div>
 		</div>
-	</div>
 
-	<div class="row margin-top-10">
-		<div class="col-md-2">
-			<button class="submit-sistem" name="action" value="cad_trilha">Adicionar Trilha</button>
+		<div class="row">
+			<div class="col-md-12">
+				
+				<input type="file" class="input-sistem" name="data[]" size="20" multiple/>
+			</div>
+		</div>
+
+	</div>
+	<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
+		<div class="row margin-top-10">
+			<div class="col-md-2">
+				<button class="submit-sistem" name="action" value="adicionar">Adicionar Trilha</button>
+			</div>
 		</div>
 	</div>
 </form>
-<!-- ### Vídeos da Trilha ### -->
-
-</div>

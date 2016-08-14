@@ -42,6 +42,10 @@ class Adm_trilhas extends CI_Controller {
 			$this->form_validation->set_rules('descricao', 'DESCRIÇÃO', 'trim|required');
 
 			if($this->form_validation->run()){
+
+				$files = $_FILES['data'];
+				var_dump($files);
+
 				$data['titulo'] = $action = $this->input->post('titulo', true);
 				$data['descricao'] = $action = $this->input->post('descricao', true);
 				$data['tutor_id'] = $usuario_id;
@@ -68,6 +72,8 @@ class Adm_trilhas extends CI_Controller {
 		$view['menu'] = $this->getMenu();
 		$this->load->view('adm-trilhas', $view);
 	}
+
+
 
 	public function editar($trilha_id){
 		$view['menu'] = $this->getMenu();
