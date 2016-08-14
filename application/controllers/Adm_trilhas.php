@@ -37,14 +37,18 @@ class Adm_trilhas extends CI_Controller {
 
 		$action = $this->input->post('action');
 
-		if($action === "cad_trilha"){
+		if($action === "adicionar"){
 			$this->form_validation->set_rules('titulo', 'TITULO', 'trim|required');
 			$this->form_validation->set_rules('descricao', 'DESCRIÇÃO', 'trim|required');
 
 			if($this->form_validation->run()){
 
+				$this->load->library('upload');
+
 				$files = $_FILES['data'];
-				var_dump($files);
+				$ext = array("pdf". "doc", "docx", "xls", "xlsx", "ppt", "pptx", "rar", "zip", "txt");
+				$upload = upload($files, $ext, "./upload/");
+				var_dump($upload);
 
 				$data['titulo'] = $action = $this->input->post('titulo', true);
 				$data['descricao'] = $action = $this->input->post('descricao', true);
