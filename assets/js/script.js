@@ -17,7 +17,7 @@ $(function(){
 	$('.horas').mask('00:00', {placeholder: "00:00"});
 
 	setTimeout(function(){ 
-		$(".alerta").fadeOut('fast'); }, 5000);
+		$(".alerta").fadeOut('fast'); }, 10000);
 
 	$('.favicon').click(function(){
 		var video_id = $(this).attr('alt');

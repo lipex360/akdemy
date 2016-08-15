@@ -34,6 +34,7 @@ class Adm_trilhas extends CI_Controller {
 
 	public function adicionar(){
 		$usuario_id = $_SESSION['usuario']['id'];
+		$hash = $_SESSION['usuario']['hash'];
 
 		$action = $this->input->post('action');
 
@@ -45,17 +46,24 @@ class Adm_trilhas extends CI_Controller {
 
 				$this->load->library('upload');
 
-				$files = $_FILES['data'];
-				$ext = array("pdf". "doc", "docx", "xls", "xlsx", "ppt", "pptx", "rar", "zip", "txt");
-				$upload = upload($files, $ext, "./upload/");
-				var_dump($upload);
 
 				$data['titulo'] = $action = $this->input->post('titulo', true);
 				$data['descricao'] = $action = $this->input->post('descricao', true);
 				$data['tutor_id'] = $usuario_id;
 
 				$setTrilha = $this->trilhas->cadastrar($data);
-				
+
+				$files = $_FILES['data'];
+
+				if($files['name'][0] != ""){
+
+					$ext = array("pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "rar", "zip", "txt");
+					$path = "./upload/{$hash}/";
+
+					$this->uploadFiles($files, $ext, $path, $setTrilha);
+				}
+
+
 				if($setTrilha){
 					$alerta['mensagem'] = "Trilha <b>{$data['titulo']}</b> cadastrada com sucesso! <b><a href='editar/$setTrilha'>Clique Aqui</a></b> para configurá-la";
 					$alerta['classe'] = 'success';
@@ -105,6 +113,7 @@ class Adm_trilhas extends CI_Controller {
 			}
 
 		}
+
 		if(isset($alerta)){$view['alerta'] = $alerta;}
 
 		$trilhas = $this->trilhas->trilhas($trilha_id);
@@ -117,10 +126,27 @@ class Adm_trilhas extends CI_Controller {
 			'descricao' => $qTrilha[0]->descricao,
 			'status' => $qTrilha[0]->status
 		);
+
+		// ARQUIVOS DA TRILHA
+		$arquivos = $this->trilhas->trilhas_arquivos($usuario_id, $usuario_id);
+		$rFiles = $arquivos->result();
+		$view['arquivos'] = $rFiles;
 		
 		// MÓDULOS DA PÁGINA
 		$view['modulos'][] = 'adm-trilha-editar';
+		$view['modulos'][] = 'tb-trilhas-arquivos';
 		$this->load->view('adm-trilhas', $view);
+	}
+
+	public function uploadFiles($files, $ext, $path, $id){
+		$tutor_id = $_SESSION['usuario']['id'];
+		$uploads = upload($files, $ext, $path);
+
+		foreach ($uploads as $file) {
+			$file['tutor_id'] = $tutor_id;
+			$file['trilha_id'] = $id ;
+			$this->trilhas->upFiles($file);
+		}
 	}
 
 }

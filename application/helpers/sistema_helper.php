@@ -86,6 +86,13 @@
 		// CRIA DIRETÓRIO SE NÃO EXISTIR
 		if (!is_dir($path)) {
 			mkdir($path, 0777, true);
+			
+			$fp = fopen($path."index.html", "a");
+			 
+			$escreve = fwrite($fp, "<title>403 Forbidden</title><p>Directory access is forbidden.</p>");
+			 
+			// Fecha o arquivo
+			fclose($fp);
 		}
 
 		$i = 0;
@@ -110,9 +117,9 @@
 			}
 			
 			$files[$i] = array(
-				"count" => $i,
 				"name" => $name,
 				"unique_name" => $unique_name,
+				"path" => $filepath,
 				"ext" => $ext,
 				"size" => ceil($value['size']/1024),
 				"error" => $error

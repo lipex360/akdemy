@@ -11,6 +11,13 @@
 			$this->db->where('id', $id);
 			return $this->db->get();
 		}
+		public function trilhas_arquivos($trilha_id, $tutor_id, $status = NULL){
+			$this->db->from('trilhas_arquivos');
+			$this->db->where('trilha_id', $trilha_id);
+			$this->db->where('tutor_id', $tutor_id);
+			if(!is_null($status)){$this->db->where('status', $status);}
+			return $this->db->get();
+		}
 
 		public function tutor_trilhas($tutor_id, $trilha_id = NULL, $status = NULL){
 			$this->db->from('trilhas');
@@ -35,6 +42,11 @@
 
 		public function cadastrar(array $data){
 			$this->db->insert('trilhas', $data);
+			return $this->db->insert_id();
+		}
+
+		public function upFiles(array $data){
+			$this->db->insert('trilhas_arquivos', $data);
 			return $this->db->insert_id();
 		}
 
