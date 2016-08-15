@@ -1,7 +1,5 @@
-<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
-
-	<form action="<?= base_url('adm_videos/adicionar'); ?>" method="post">
-		
+<?php echo form_open_multipart(base_url('adm_videos/adicionar'));?>
+	<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">		
 		<div class="row">
 			<div class="col-md-12">
 				<i class="fa fa-plus pull-left margin-top-5"  aria-hidden="true"></i><p class="float-left margin-top-2 margin-left-3">Adicionar Novo Vídeos</p>
@@ -85,14 +83,16 @@
 				<textarea name="descricao" class="input-sistem" style="min-height:150px" placeholder="Descreva as informações da Trilha" required="required"></textarea>
 			</div>
 		</div>
+	</div>
 
+	<?php $this->load->view('modulos/diretor/adm-video-upload'); ?>
+	
+	<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 		<div class="row margin-top-10">
 			<div class="col-md-2">
 				<button class="submit-sistem" name="action" value="cad_video">Adicionar Vídeo</button>
 			</div>
 		</div>
+	</div>
 
-
-	</form>
-
-</div>
+</form>

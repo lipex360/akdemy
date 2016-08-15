@@ -1,6 +1,5 @@
-<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
-
-	<form action="<?= base_url("adm_videos/editar/$video_editar->id"); ?>" method="post">
+<?php echo form_open_multipart("adm_videos/editar/$video_editar->id");?>
+	<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 		<div class="row">
 			<div class="col-md-12">
 				<i class="fa fa-pencil pull-left margin-top-5"  aria-hidden="true"></i><p class="float-left margin-top-2 margin-left-3">Editar Vídeos</p>
@@ -141,14 +140,14 @@
 				<textarea name="descricao" class="input-sistem" style="min-height:150px" placeholder="Descreva as informações da Trilha" required="required"><?= $video_editar->descricao; ?></textarea>
 			</div>
 		</div>
-
+	</div>
+	<?php $this->load->view('modulos/diretor/tb-videos-arquivos'); ?>
+	<?php $this->load->view('modulos/diretor/adm-video-upload'); ?>
+	<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 		<div class="row margin-top-10">
 			<div class="col-md-2">
 				<button class="submit-sistem" name="action" value="editar">Alterar Vídeo</button>
 			</div>
 		</div>
-
-
-	</form>
-
-</div>
+	</div>
+</form>

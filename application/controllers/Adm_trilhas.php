@@ -53,18 +53,14 @@ class Adm_trilhas extends CI_Controller {
 
 				$setTrilha = $this->trilhas->cadastrar($data);
 
-				$files = $_FILES['data'];
-
-				if($files['name'][0] != ""){
-
-					$ext = array("pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "rar", "zip", "txt");
-					$path = "./upload/{$hash}/";
-
-					$this->uploadFiles($files, $ext, $path, $setTrilha);
-				}
-
-
 				if($setTrilha){
+					
+					$files = $_FILES['data'];
+					if($files['name'][0] != ""){
+						$path = "./upload/{$hash}/trilhas/";
+						$this->uploadFiles($files, $path, $setTrilha);
+					}
+
 					$alerta['mensagem'] = "Trilha <b>{$data['titulo']}</b> cadastrada com sucesso! <b><a href='editar/$setTrilha'>Clique Aqui</a></b> para configurá-la";
 					$alerta['classe'] = 'success';
 				}else{
@@ -90,6 +86,7 @@ class Adm_trilhas extends CI_Controller {
 	public function editar($trilha_id){
 		$view['menu'] = $this->getMenu();
 		$usuario_id = $_SESSION['usuario']['id'];
+		$hash = $_SESSION['usuario']['hash'];
 
 		if($this->input->post('action') == 'set_trilha'){
 
@@ -101,9 +98,16 @@ class Adm_trilhas extends CI_Controller {
 				$data['descricao'] = $action = $this->input->post('descricao', true);
 				$data['tutor_id'] = $usuario_id;
 
-				$setTrilha = $this->trilhas->alterar($trilha_id, $data);
+				$setTrilha = $this->trilhas->alterar($trilha_id, $data);				
 
 				if($setTrilha){
+					
+					$files = $_FILES['data'];
+					if($files['name'][0] != ""){
+						$path = "./upload/{$hash}/trilhas/";
+						$this->uploadFiles($files, $path, $setTrilha);
+					}
+
 					$alerta['mensagem'] = "Trilha <b>{$data['titulo']}</b> Alterada com sucesso!";
 					$alerta['classe'] = 'success';
 				}else{
@@ -116,8 +120,11 @@ class Adm_trilhas extends CI_Controller {
 
 		if(isset($alerta)){$view['alerta'] = $alerta;}
 
-		$trilhas = $this->trilhas->trilhas($trilha_id);
+		$trilhas = $this->trilhas->adm_trilhas($trilha_id, $usuario_id);
 		$qTrilha = $trilhas->result();
+		if(!$qTrilha){
+			redirect('adm_trilhas/trilhas');
+		}
 		
 		// DADOS DA TRILHA
 		$view['trilha'] = array(
@@ -128,24 +135,28 @@ class Adm_trilhas extends CI_Controller {
 		);
 
 		// ARQUIVOS DA TRILHA
-		$arquivos = $this->trilhas->trilhas_arquivos($usuario_id, $usuario_id);
+		$arquivos = $this->trilhas->trilhas_arquivos($trilha_id, $usuario_id);
 		$rFiles = $arquivos->result();
 		$view['arquivos'] = $rFiles;
-		
+
 		// MÓDULOS DA PÁGINA
 		$view['modulos'][] = 'adm-trilha-editar';
-		$view['modulos'][] = 'tb-trilhas-arquivos';
 		$this->load->view('adm-trilhas', $view);
 	}
 
-	public function uploadFiles($files, $ext, $path, $id){
+	public function uploadFiles($files, $path, $id){
+
 		$tutor_id = $_SESSION['usuario']['id'];
+		$ext = array("pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "rar", "zip", "txt", "jpg", "png", "gif", "jpeg");
+		
 		$uploads = upload($files, $ext, $path);
 
 		foreach ($uploads as $file) {
-			$file['tutor_id'] = $tutor_id;
-			$file['trilha_id'] = $id ;
-			$this->trilhas->upFiles($file);
+			if($file['error'] == 0){
+				$file['tutor_id'] = $tutor_id;
+				$file['trilha_id'] = $id ;
+				$this->trilhas->upFiles($file);
+			}
 		}
 	}
 

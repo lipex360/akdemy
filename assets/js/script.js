@@ -53,5 +53,9 @@ $(function(){
 			$("#transmissao").toggle('slow');
 			$('.required').attr('required','required');
 		}
+	});
+
+	$(".removeFile").click(function(){
+		alert("remover");
 	})
 })

@@ -47,8 +47,7 @@
 					<td class="text-center"><a target="_blank" href="<?= base_url($arquivo->path); ?>" class="pink"><?= $arquivo->ext ?></a></a></td>
 					<td class="text-center"><a target="_blank" href="<?= base_url($arquivo->path); ?>" class="pink"><?= $size ?></a></a></td>
 					<td class="text-center">
-						<a class="pink removeFile" target="_blank" title="Remover Arquivo" href="javascript:void(0);" ><i class="fa fa-times" aria-hidden="true"></i></a>
-						<div class="display-none float-right" style="z-indez:2000"><button class="btn-danger btn btn-xs">remover</button> <button class="btn btn-xs btn-default">cancelar</button></div>
+						<a class="pink removeFile" title="Remover Arquivo" href="javascript:void(0);" ><i class="fa fa-times" aria-hidden="true"></i></a>
 					</td>
 				</tr>
 				<?php $i++;}} ?>

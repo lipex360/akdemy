@@ -15,6 +15,15 @@
 			return $this->db->get();
 		}
 
+		public function videos_arquivos($video_id, $tutor_id, $status = NULL){
+			$this->db->from('videos_arquivos');
+			$this->db->where('video_id', $video_id);
+			$this->db->where('tutor_id', $tutor_id);
+			if(!is_null($status)){$this->db->where('status', $status);}
+			return $this->db->get();
+		}
+
+
 		public function editar($id, array $data){
 			$this->db->where('id', $id);
 			if($this->db->update('videos', $data)){
@@ -26,6 +35,11 @@
 
 		public function inserir(array $input){
 			$this->db->insert('videos', $input);
+			return $this->db->insert_id();
+		}
+
+		public function upFiles(array $data){
+			$this->db->insert('videos_arquivos', $data);
 			return $this->db->insert_id();
 		}
 

@@ -11,6 +11,13 @@
 			$this->db->where('id', $id);
 			return $this->db->get();
 		}
+		public function adm_trilhas($id, $tutor_id){
+			$this->db->from('trilhas');
+			$this->db->where('tutor_id', $tutor_id);
+			$this->db->where('id', $id);
+			return $this->db->get();
+		}
+		
 		public function trilhas_arquivos($trilha_id, $tutor_id, $status = NULL){
 			$this->db->from('trilhas_arquivos');
 			$this->db->where('trilha_id', $trilha_id);

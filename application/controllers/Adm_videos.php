@@ -35,6 +35,7 @@ class Adm_videos extends CI_Controller {
 
 	public function adicionar(){
 		$usuario_id = $_SESSION['usuario']['id'];
+		$hash = $_SESSION['usuario']['hash'];
 		
 		// TRILHAS DISPONÍVEIS
 		$trilhas = $this->trilhas->tutor_trilhas($usuario_id);
@@ -54,7 +55,16 @@ class Adm_videos extends CI_Controller {
 			}
 			
 			$setVideo = $this->videos->inserir($form);
+
 			if($setVideo){
+
+				$files = $_FILES['data'];
+
+				if($files['name'][0] != ""){
+					$path = "./upload/{$hash}/videos/";
+					$this->uploadFiles($files, $path, $setVideo);
+				}
+
 				$alerta['mensagem'] = "Vídeo <b>{$form['titulo']}</b> cadastrada com sucesso!";
 				$alerta['classe'] = 'success';
 			}else{
@@ -69,8 +79,9 @@ class Adm_videos extends CI_Controller {
 		$this->load->view('adm-videos', $view);
 	}
 
-	public function editar($id){
+	public function editar($video_id){
 		$usuario_id = $_SESSION['usuario']['id'];
+		$hash = $_SESSION['usuario']['hash'];
 
 		if($this->input->post('action')==="editar"){
 			$form = $this->input->post();
@@ -83,8 +94,15 @@ class Adm_videos extends CI_Controller {
 				$form['data'] = $data[2].'-'.$data[1].'-'.$data[0];
 			}
 
-			$setVideo = $this->videos->editar($id, $form);
+			$setVideo = $this->videos->editar($video_id, $form);
 			if($setVideo){
+				$files = $_FILES['data'];
+
+				if($files['name'][0] != ""){
+					$path = "./upload/{$hash}/videos/";
+					$this->uploadFiles($files, $path, $setVideo);
+				}
+
 				$alerta['mensagem'] = "Vídeo <b>{$form['titulo']}</b> alterado com sucesso!";
 				$alerta['classe'] = 'success';
 			}else{
@@ -94,7 +112,7 @@ class Adm_videos extends CI_Controller {
 		}
 
 		if(isset($alerta)){$view['alerta'] = $alerta;}
-		$view['video_editar'] = $this->videos->getVideo($id);
+		$view['video_editar'] = $this->videos->getVideo($video_id);
 
 		// TRILHA CONFIGURADA
 		$trilhas = $this->trilhas->tutor_trilhas($usuario_id, $view['video_editar']->trilha_id);
@@ -106,6 +124,11 @@ class Adm_videos extends CI_Controller {
 		$qTrilhas = $trilhas->result();
 		$view['trilhas'] = $qTrilhas;
 
+		// ARQUIVOS DA TRILHA
+		$arquivos = $this->videos->videos_arquivos($video_id, $usuario_id);
+		$rFiles = $arquivos->result();
+		$view['arquivos'] = $rFiles;
+
 
 		// MÓDULOS DA PÁGINA
 		if(isset($alerta)){$view['alerta'] = $alerta;}
@@ -113,6 +136,23 @@ class Adm_videos extends CI_Controller {
 
 		$view['menu'] = $this->getMenu();
 		$this->load->view('adm-videos', $view);
+	}
+
+
+	public function uploadFiles($files, $path, $id){
+
+		$tutor_id = $_SESSION['usuario']['id'];
+		$ext = array("pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "rar", "zip", "txt", "jpg", "png", "gif", "jpeg");
+		
+		$uploads = upload($files, $ext, $path);
+
+		foreach ($uploads as $file) {
+			if($file['error'] == 0){
+				$file['tutor_id'] = $tutor_id;
+				$file['video_id'] = $id ;
+				$this->videos->upFiles($file);
+			}
+		}
 	}
 
 
