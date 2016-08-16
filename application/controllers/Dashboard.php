@@ -7,7 +7,7 @@ class Dashboard extends CI_Controller {
 		if(!isset($_SESSION['usuario'])){
 			redirect('home');
 		}
-    }
+	}
 
 	public function index(){
 		extract($_SESSION['usuario']);
