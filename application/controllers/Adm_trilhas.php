@@ -10,7 +10,7 @@ class Adm_trilhas extends CI_Controller {
 		}
 		$this->load->model('Usuario_model', 'usuario');
 		$this->load->model('Videos_model', 'videos');
-		$this->load->model('Trilha_model', 'trilhas');
+		$this->load->model('Trilhas_model', 'trilhas');
 	}
 
 	public function getMenu(){

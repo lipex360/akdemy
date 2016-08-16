@@ -7,6 +7,9 @@ class Dashboard extends CI_Controller {
 		if(!isset($_SESSION['usuario'])){
 			redirect('home');
 		}
+		$this->load->model('Usuario_model', 'usuario');
+		$this->load->model('Videos_model', 'videos');
+		$this->load->model('Trilhas_model', 'trilhas');
 	}
 
 	public function index(){
