@@ -72,3 +72,18 @@ textarea.box-comentario{ width:100%; border:1px solid #FBD9DF; height: 200px}
 	from { color: #FDF0F2; }
 	to { color: #F9B0BD; }
 }
+
+/*MODAL*/
+#bg{display: none; width:100%; background-color: rgba(0,0,0,0); 
+	height: 100%; top:0; left: 0; position: fixed; z-index: 100; 
+	transition: all 0.3s; transition-delay: 0.1s
+}
+
+#bg:target{background-color: rgba(0,0,0,.8); display: block;}
+#bg:target ~ .box{
+	top:130px;
+	transition: all 0.5s;
+}
+
+.box{z-index: 300; position: absolute; width: 100%; top:-1000px;}
+.radius{ border-radius: 4px; }

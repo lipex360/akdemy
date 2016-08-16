@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Adm_usuarios extends CI_Controller {
+class Adm_consultoras extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		if(!isset($_SESSION['usuario'])){
@@ -20,9 +20,13 @@ class Adm_usuarios extends CI_Controller {
 
 	public function consultoras(){
 		$usuario_id = $_SESSION['usuario']['id'];
-		$view['modulos'][] = "";
+
+		$view['usuarios'] = "";
+
+		$view['modulos'][] = "tb-consultoras-ativas";
+		$view['modulos'][] = "tb-consultoras-convidadas";
 
 		$view['menu'] = $this->getMenu();
-		$this->load->view('adm-usuarios', $view);
+		$this->load->view('adm-consultoras', $view);
 	}
 }
