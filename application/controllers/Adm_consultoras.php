@@ -45,6 +45,8 @@ class Adm_consultoras extends CI_Controller {
 					if($nova_consultora){
 						$alerta['mensagem'] = "Consultora {$data['nome']} incluída com sucesso! Um e-mail foi enviada para ela com instruções de ativação.";
 						$alerta['classe'] = 'success';
+						$this->email();
+						
 					} else {
 						$alerta['mensagem'] = "Erro ao incluir a consultora. Entre em contato com o desenvolvedor";
 						$alerta['classe'] = 'danger';
@@ -74,5 +76,18 @@ class Adm_consultoras extends CI_Controller {
 
 		$view['menu'] = $this->getMenu();
 		$this->load->view('adm-consultoras', $view);
+	}
+
+
+	public function email(){
+		$this->load->library('email');
+
+		$this->email->from('lipex360@gmail.com', 'Felipe');
+		$this->email->to('lipex360@gmail.com');
+
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.');
+
+		$this->email->send();
 	}
 }
