@@ -5,7 +5,7 @@ class Adm_videos extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		if(!isset($_SESSION['usuario'])){
+		if(!isset($_SESSION['usuario']) || $_SESSION['usuario']['nivel_id'] != 1){
 			redirect('home');
 		}
 		$this->load->model('Usuario_model', 'usuario');

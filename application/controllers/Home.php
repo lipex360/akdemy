@@ -98,6 +98,41 @@ class Home extends CI_Controller {
 	}
 	// ### function login ###
 
+	public function ativar_usuario($hash){
+		$this->load->model('Usuario_model', 'usuario');
+
+		$check_hash = $this->usuario->check_hash($hash);
+		$hash = $check_hash->result();
+		
+		if($hash){
+			$view['consultora'] = $hash[0];
+		} else {
+			redirect('home');
+		}
+
+		$this->load->view('usuario_ativar', $view);
+	}
+
+	public function ativa_conta(){
+		$this->load->model('Usuario_model', 'usuario');
+
+		$this->form_validation->set_rules('senha', 'HASH', 'trim|required|md5');
+		if($this->form_validation->run()){
+			$data = $this->input->post();
+			$hash = $data['hash'];
+			unset($data['hash']);
+			unset($data['action']);
+			unset($data['action']);
+			$data['status'] = 1;
+			$ativa_conta = $this->usuario->ativa_conta($hash, $data);
+			if($ativa_conta){
+				var_dump($ativa_conta);
+				redirect('home');
+			}
+		}
+		
+	}
+
 
 	// function logout
 	public function logout(){

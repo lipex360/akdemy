@@ -28,20 +28,20 @@
 					</div>
 
 					<div class="row margin-top-10">
-						<div class="col-md-12">
-							<label for="">Celular</label>
-							<input type="email" name="telefone" class="input-sistem" placeholder="Informe o Email da Consultora" required="required">
+						<div class="col-md-4">
+							<label for="">Telefone</label>
+							<input type="telefone" name="telefone" class="input-sistem celphone" placeholder="(XX) X.XXXX-XXXX" required="required">
 						</div>
 					</div>
 
 					<div class="row margin-top-20 margin-bottom-20">
 						<div class="col-md-4 col-md-offset-4">
-							<button class="submit-sistem" name="action" value="cad_video">Adicionar Consultora</button>
+							<button class="submit-sistem" name="action" value="nova_consultora">Adicionar Consultora</button>
 						</div>
 					</div>
 
 					<div class="row margin-bottom-30">
-						<div class="col-md-12 text-center"><small>Um e-mail será encaminhado para a consultora com um link de ativação. <br>Quando a mesma aceitar o convite, você será notificada</small></div>
+						<div class="col-md-12 text-center"><small>Um e-mail será encaminhado para a consultora com um link de ativação. <br>Quando a mesma aceitar o convite, você será notificada.</small></div>
 					</div>
 
 				</div>

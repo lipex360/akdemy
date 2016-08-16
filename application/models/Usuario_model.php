@@ -13,6 +13,34 @@ class Usuario_model extends CI_Model {
 		return $query = $this->db->get();
 	}
 
+	public function check_hash($hash){
+		$this->db->from('usuarios');
+		$this->db->where('hash', $hash);
+		$this->db->where('status', 0);
+		return $this->db->get();
+	}
+
+	public function ativa_conta($hash, $data){
+		$this->db->where('hash', $hash);
+		$ativa_conta = $this->db->update('usuarios', $data);
+		return $ativa_conta;
+	}
+
+	public function base_consultores($tutor_id, $email = NULL, $status = NULL){
+		$this->db->from('usuarios');
+		$this->db->where('tutor_id', $tutor_id);
+		if(!is_null($email)){ $this->db->where('email', $email); }
+		if(!is_null($status)){ $this->db->where('status', $status); }
+		$this->db->order_by('nome');
+		return $this->db->get();
+	}
+
+	public function nova_consultora(array $data){
+		$this->db->insert('usuarios', $data);
+		return $this->db->insert_id();
+	}
+
+
 	public function menu($nivel){
 		$this->db->from('niveis_menu');
 		$this->db->where('nivel_id', $nivel);

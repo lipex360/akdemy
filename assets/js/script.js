@@ -14,6 +14,18 @@ $(function(){
 		$('.alerta').fadeOut('fast');
 	})
 
+
+	$('.form_ativar').submit(function(){
+		var pass1 = $('.pass1').val();
+		var pass2 = $('.pass2').val();
+		if(pass1 != pass2){
+			alert("Senhas Informadas são diferentes");
+			$('.pass1').val("").focus();
+			$('.pass2').val("");
+			return false;
+		}
+	})
+
 	$('.horas').mask('00:00', {placeholder: "00:00"});
 
 	setTimeout(function(){ 
@@ -54,8 +66,21 @@ $(function(){
 			$('.required').attr('required','required');
 		}
 	});
-
+	
 	$(".removeFile").click(function(){
 		alert("remover");
-	})
+	});
+
+	// MASK
+	var SPMaskBehavior = function (val) {
+		return val.replace(/\D/g, '').length === 11 ? '(00) 0.0000-0000' : '(00) 0000-00009';
+	},
+	
+	spOptions = {
+		onKeyPress: function(val, e, field, options) {
+		field.mask(SPMaskBehavior.apply({}, arguments), options);
+	    }
+	};
+
+	$('.celphone').mask(SPMaskBehavior, spOptions);
 })

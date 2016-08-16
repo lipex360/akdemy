@@ -22,6 +22,7 @@ a.pink:hover{color:#FF3E3E !important}
 .button{height: 40px; color:#FF7979 !important; background: #FDF0F2 !important; border:none; width: 100%}
 
 .input-sistem{border:1px solid #F9D2D8; padding:5px 10px; border-radius: 5px; width: 100%}
+.input-sistem:disabled {border:1px solid #F9D2D8; padding:5px 10px; border-radius: 5px; width: 100%}
 .submit-sistem{background: #FDF0F2; padding:5px 10px; border:1px solid #F9D2D8; border-radius: 5px; width: 100%}
 
 .foto{width:240px; height: 240px; background: #FDF0F2; padding:10px;}

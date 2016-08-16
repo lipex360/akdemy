@@ -10,33 +10,40 @@
 			<table>
 				<thead>
 					<tr>
-						<th>Nome</th>
-						<th>Ativa</th>
-						<th class="text-center">E-mail</th>
-						<th class="text-center">Telefone</th>
-						<th class="text-center"><i class="fa fa-cogs" aria-hidden="true" title="Remover Arquivo"></i></th>
+						<th width="20%">Nome</th>
+						<th width="20%" class="text-center">Ultima Atividade</th>
+						<th width="40%" class="text-center">E-mail</th>
+						<th width="20%" class="text-center">Telefone</th>
+						<th class="text-center"><i class="fa fa-cogs" aria-hidden="true" title="Detalhar"></i></th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php  
-						if(!$usuarios){
+						if(!$ativas){
 					?>
 					<tr class="linha-0">
-						<td colspan = "5" class="text-center"><span>Nenhum Dado Postado</span></td>
+						<td colspan = "5" class="text-center"><span>Nenhuma Consultora Ativa</span></td>
 					</tr>
 					<?php } 
-						else { 	
+						else { 
+							$i = 0;
+							foreach ($ativas as $consultora) {
+								if($consultora->acesso){
+									$acesso = date("d/m/Y H:i" , strtotime($consultora->acesso));
+								} else {
+									$acesso = "N/A";
+								}								
 					?>
-					<tr class="linha-0">
-						<td><a target="_blank" href="" class="pink"></a></td>
-						<td><a target="_blank" href="" class="pink"></a></td>
-						<td><a target="_blank" href="" class="pink"></a></td>
-						<td><a target="_blank" href="" class="pink"></a></td>
+					<tr class="linha-<?= $i%2; ?>">
+						<td><a target="_blank" href="" class="pink"><?= $consultora->nome; ?></a></td>
+						<td class="text-center"><a target="_blank" href="" class="pink"><?= $acesso; ?></a></td>
+						<td class="text-center"><a target="_blank" href="" class="pink"><?= $consultora->email; ?></a></td>
+						<td class="text-center"><a target="_blank" href="" class="pink"><?= $consultora->telefone; ?></a></td>
 						<td class="text-center">
-							<a class="pink removeFile" title="Remover Arquivo" href="javascript:void(0);" ><i class="fa fa-times" aria-hidden="true"></i></a>
+							<a class="pink removeFile" title="Detalhar" href="javascript:void(0);" ><i class="fa fa-search-plus" aria-hidden="true"></i></a>
 						</td>
 					</tr>
-					<?php } ?>
+					<?php $i++; } } ?>
 				</tbody>
 			</table>
 		</div>
