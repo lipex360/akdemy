@@ -45,7 +45,16 @@ class Adm_consultoras extends CI_Controller {
 					if($nova_consultora){
 						$alerta['mensagem'] = "Consultora {$data['nome']} incluída com sucesso! Um e-mail foi enviada para ela com instruções de ativação.";
 						$alerta['classe'] = 'success';
-						$this->email();
+
+						$nome = $data['nome'];
+
+						$link = base_url('home/ativar_usuario/'.$data['hash']);
+						$texto  = "<p>Olá, {$nome}!</p>";
+						$texto .= "<p><a href={$link}>Clique Aqui</a> para ativar sua conta no Akdemy</p>";
+
+						$this->email($data['email'], 'Akdemy - Ativação de Conta', $texto);
+
+						// $this->email();
 						
 					} else {
 						$alerta['mensagem'] = "Erro ao incluir a consultora. Entre em contato com o desenvolvedor";
@@ -79,14 +88,17 @@ class Adm_consultoras extends CI_Controller {
 	}
 
 
-	public function email(){
+	public function email($to, $title, $text){
 		$this->load->library('email');
 
-		$this->email->from('lipex360@gmail.com', 'Felipe');
-		$this->email->to('lipex360@gmail.com');
+		$config['mailtype'] = "html";
+		$this->email->initialize($config);
 
-		$this->email->subject('Email Test');
-		$this->email->message('Testing the email class.');
+		$this->email->from($_SESSION['usuario']['email'], $_SESSION['usuario']['nome']);
+		$this->email->to($to);
+
+		$this->email->subject($title);
+		$this->email->message($text);
 
 		$this->email->send();
 	}
