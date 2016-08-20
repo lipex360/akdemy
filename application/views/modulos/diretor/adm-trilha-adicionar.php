@@ -21,7 +21,9 @@
 			</div>
 		</div>
 	</div>
+	
 	<?php $this->load->view('modulos/diretor/adm-trilha-upload'); ?>
+
 	<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 		<div class="row margin-top-10">
 			<div class="col-md-2">

@@ -12,9 +12,9 @@
 					<tr>
 						<th width="20%">Nome</th>
 						<th width="20%" class="text-center">Data do Convite</th>
-						<th width="40%" class="text-center">E-mail</th>
-						<th width="20%" class="text-center">Telefone</th>
-						<th class="text-center"><i class="fa fa-cogs" aria-hidden="true" title="Detalhar"></i></th>
+						<th width="30%" class="text-center">E-mail</th>
+						<th width="22%" class="text-center">Telefone</th>
+						<th width="28%" class="text-center"><i class="fa fa-cogs" aria-hidden="true" title="Detalhar"></i></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -41,7 +41,14 @@
 						<td class="text-center"><a target="_blank" href="" class="pink"><?= $consultora->email; ?></a></td>
 						<td class="text-center"><a target="_blank" href="" class="pink"><?= $consultora->telefone; ?></a></td>
 						<td class="text-center">
-							<a class="pink removeFile" title="Detalhar" href="javascript:void(0);" ><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+							<ul class="list-inline">
+								<li>
+									<a class="pink" href="javascript:void(0);" title="Reencaminhar Convite"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+								</li>
+								<li>
+									<a class="pink" href="javascript:void(0);" title="Remover Convite"><i class="fa fa-times" aria-hidden="true"></i></a>
+								</li>
+							</ul>
 						</td>
 					</tr>
 					<?php $i++; } } ?>

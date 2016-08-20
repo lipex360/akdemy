@@ -12,9 +12,9 @@
 					<tr>
 						<th width="20%">Nome</th>
 						<th width="20%" class="text-center">Ultima Atividade</th>
-						<th width="40%" class="text-center">E-mail</th>
-						<th width="20%" class="text-center">Telefone</th>
-						<th class="text-center"><i class="fa fa-cogs" aria-hidden="true" title="Detalhar"></i></th>
+						<th width="30%" class="text-center">E-mail</th>
+						<th width="22%" class="text-center">Telefone</th>
+						<th width="28%" class="text-center"><i class="fa fa-cogs" aria-hidden="true" title="Detalhar"></i></th>
 					</tr>
 				</thead>
 				<tbody>

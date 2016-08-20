@@ -73,7 +73,7 @@
 					<ul class="list-unstyled list-inline menu">
 
 						<li>
-							<a href="javascript:void()" title="Documentos">
+							<a href="javascript:void()" class="pink" title="Documentos">
 								<i class="fa fa-files-o" aria-hidden="true"></i>
 							</a>
 						</li>

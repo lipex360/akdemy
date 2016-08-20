@@ -3,12 +3,13 @@ body{background: #EFEFEF; color: #FF7979 !important;}
 textarea:focus{outline: none !important;}
 iframe{border:1px solid #FCDAE0;}
 label{font-weight: normal;}
+input[type="checkbox"]{border:1px solid red; outline: none}
 
-.menu i{color:#F9B0BD; font-size: 24px; font-weight: thin}
+.menu i{color:#F9B0BD; font-size: 24px; font-weight: thin; transition: all .5s}
 .menu i:hover{color:#F791A3;}
 
 
-.pink{color:#FF3E3E !important}
+.pink{color:#FF3E3E !important; transition: all .5s}
 a.pink{color:#FF7979 !important}
 a.pink:hover{color:#FF3E3E !important}
 
@@ -73,18 +74,3 @@ textarea.box-comentario{ width:100%; border:1px solid #FBD9DF; height: 200px}
 	from { color: #FDF0F2; }
 	to { color: #F9B0BD; }
 }
-
-/*MODAL*/
-#bg{display: none; width:100%; background-color: rgba(0,0,0,0); 
-	height: 100%; top:0; left: 0; position: fixed; z-index: 100; 
-	transition: all 0.3s; transition-delay: 0.1s
-}
-
-#bg:target{background-color: rgba(0,0,0,.8); display: block;}
-#bg:target ~ .box{
-	top:130px;
-	transition: all 0.5s;
-}
-
-.box{z-index: 300; position: absolute; width: 100%; top:-1000px;}
-.radius{ border-radius: 4px; }

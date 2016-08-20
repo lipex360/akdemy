@@ -13,7 +13,7 @@
 			?>
 				<a href="<?= base_url('adm_usuarios/consultoras')?>" class="pull-right pink"><i class="fa fa-list-ul margin-right-5" aria-hidden="true"></i></i>Visualizar Consultoras</a>
 			<?php } else {?>
-				<a href="#bg" class="pull-right pink"><i class="fa fa-plus margin-right-5" aria-hidden="true"></i></i>Adicionar Nova Consultora</a>
+				<a href="#bg" class="pull-right pink" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus margin-right-5" aria-hidden="true"></i></i>Adicionar Nova Consultora</a>
 			<?php }?>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 	$this->load->view($modulo);
 }
 
-$this->load->view('modulos/diretor/adm-consultoras-adicionar');
+$this->load->view('modulos/diretor/modal-consultoras-adicionar');
 $this->load->view('rodape');
 
 ?>
