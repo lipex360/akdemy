@@ -1,4 +1,3 @@
-<?php echo form_open_multipart('adm_trilhas/editar/'.$this->uri->segment(3));?>
 	<div class="container shadow-grey bg-white border-radius padding-top-20 padding-bottom-30 margin-top-10">
 	<!-- Vídeos da Trilha  -->
 		<input type="hidden" name="trilha_id" value="<?= $trilha['id']; ?>" id="">
@@ -36,5 +35,3 @@
 			</div>
 		</div>
 	</div>
-
-</form>

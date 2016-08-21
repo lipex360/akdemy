@@ -6,11 +6,18 @@ class Usuario_model extends CI_Model {
 		parent::__construct();
 	}
 
+	public function getUsuario($id, $status = NULL){
+		$this->db->from('usuarios');
+		$this->db->where('id', $id);
+		if(!is_null($status)) { $this->db->where('status', 1); }
+		return $this->db->get();
+	}
+
 	public function check_usuario($email, $senha){
 		$this->db->from('usuarios');
 		$this->db->where('email', $email);
 		$this->db->where('senha', $senha);
-		return $query = $this->db->get();
+		return $this->db->get();
 	}
 
 	public function check_hash($hash){

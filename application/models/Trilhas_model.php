@@ -66,10 +66,19 @@
 			}
 		}
 
-		public function usuarios_trilhas($usuario_id, $tutor_id){
+		// public function usuarios_trilhas($usuario_id, $tutor_id){
+		// 	$this->db->from('usuarios_trilhas');
+		// 	$this->db->where('usuario_id', $usuario_id);
+		// 	$this->db->where('tutor_id', $tutor_id);
+		// 	$this->db->where('status', 1);
+		// 	return $this->db->get();
+		// }
+
+		public function trilhas_usuarios_ativos($trilha_id, $tutor_id){
 			$this->db->from('usuarios_trilhas');
-			$this->db->where('usuario_id', $usuario_id);
+			$this->db->where('trilha_id', $trilha_id);
 			$this->db->where('tutor_id', $tutor_id);
+			$this->db->where('status', 1);
 			return $this->db->get();
 		}
 

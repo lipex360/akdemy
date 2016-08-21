@@ -83,4 +83,15 @@ $(function(){
 	};
 
 	$('.celphone').mask(SPMaskBehavior, spOptions);
+
+
+	// MARCAR/DESMARCAR CHECKBOX
+	$('.tudo').click(function(){
+		var val = this.checked;
+		$('.ckbs input[type=checkbox').each(function () {
+            $(this).prop('checked', val);
+        });
+	})
+
+
 })

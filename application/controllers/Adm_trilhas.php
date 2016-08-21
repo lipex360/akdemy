@@ -90,6 +90,13 @@ class Adm_trilhas extends CI_Controller {
 
 		if($this->input->post('action') == 'set_trilha'){
 
+			// ASSOCIAR CONSULTORES À TRILHA
+			if(isset($_POST['usuId'])){
+				$checkbox = $_POST['usuId'];
+				var_dump($checkbox);
+			}
+			
+
 			$this->form_validation->set_rules('titulo', 'TITULO', 'trim|required');
 			$this->form_validation->set_rules('descricao', 'DESCRIÇÃO', 'trim|required');
 
@@ -139,6 +146,51 @@ class Adm_trilhas extends CI_Controller {
 		$rFiles = $arquivos->result();
 		$view['arquivos'] = $rFiles;
 
+		// USUÁRIOS ATIVOS NA TRILHA
+		$usuarios = $this->trilhas->trilhas_usuarios_ativos($trilha_id, $usuario_id);
+		$usuarios = $usuarios->result();
+		$arConsultor = array();
+		$ativos = array();
+		if($usuarios){
+			foreach ($usuarios as $consultores) {
+				$consultor = $this->usuario->getUsuario($consultores->usuario_id, 1);
+				$consultor = $consultor->result();
+				if($consultor){
+					$arConsultor[] = array(
+						'id' => $consultor[0]->id,
+						'nome' => $consultor[0]->nome,
+						'email' => $consultor[0]->email,
+						'telefone' => $consultor[0]->telefone,
+						'acesso' => $consultor[0]->acesso
+					);
+					$ativos[] = $consultor[0]->id;
+				}
+				
+			}
+		}
+		$view['usuarios_trilhas'] = $arConsultor;
+
+		// USUARIOS VINCULADOS À DIRETORA
+		$usuarios = $this->usuario->base_consultores($usuario_id, NULL, 1);
+		$usuarios = $usuarios->result();
+		
+		if($usuarios){
+			$arrConsultor = array();
+			foreach ($usuarios as $consultor) {
+				if(!in_array($consultor->id, $ativos)){
+					$arrConsultor[] = array(
+						'id' => $consultor->id,
+						'nome' => $consultor->nome,
+						'email' => $consultor->email,
+						'telefone' => $consultor->telefone,
+						'acesso' => $consultor->acesso
+					);
+				}
+			}
+		}
+		$view['consultores_diretor'] = $arrConsultor;
+
+		
 		// MÓDULOS DA PÁGINA
 		$view['modulos'][] = 'adm-trilha-editar';
 		$this->load->view('adm-trilhas', $view);

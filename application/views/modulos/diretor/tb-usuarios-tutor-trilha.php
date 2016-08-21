@@ -11,26 +11,38 @@
 		<table>
 			<thead>
 				<tr>
-					<th></th>
-					<th>Nome</th>
-					<th>Última Atividade</th>
-					<th class="text-center">E-mail</th>
-					<th class="text-center">Telefone</th>
-					<th></th>
+					<th width="2%" class="text-center"><input type="checkbox" name='tudo' class="tudo" /></th>
+					<th width="20%">Nome</th>
+					<th width="20%">Última Atividade</th>
+					<th width="30%" class="text-center">E-mail</th>
+					<th width="45%" class="text-center">Telefone</th>
 				</tr>
 			</thead>
+			
 			<tbody>
-				<tr class="linha-0">
-					<td><input type="checkbox" name="" id=""></td>
-					<td>Nome</td>
-					<td>data</td>
-					<td>e-mail</td>
-					<td>telefone</td>
-					<td>C</td>
-				</tr>
+					<?php
+						if(isset($consultores_diretor[0])){
+							$i=0;
+							foreach ($consultores_diretor as $usuarios) {		
+		 			?>
+						<tr class="linha-<?= $i%2; ?> ckbs">
+							<td class="text-center"><input type="checkbox" name="usuId[]" value="<?= $usuarios['id']; ?>"/> </td>
+							<td><a href="<?= $usuarios['id']; ?>" class="pink" ><?= $usuarios['nome']; ?></a></td>
+							<td><a href="" class="pink" ><?= date("d/m/Y H:i" , strtotime($usuarios['acesso'])); ?></a></td>
+							<td class="text-center"><a href="" class="pink" ><?= $usuarios['email']; ?></a></td>
+							<td class="text-center"><a href="" class="pink" ><?= $usuarios['telefone']; ?></a></td>
+						</tr>
+					<?php 
+						$i++; } } else {
+					 ?>
+						<tr class="linha-0">
+							<td colspan="5" class="text-center">Nenhuma consultora disponível para associar a esta Trilha</td>
+						</tr>
+					 <?php } ?>
 			</tbody>
 		</table>
 	</div>
 </div>
 </div>
+
 <!-- ### Favoritos ### -->

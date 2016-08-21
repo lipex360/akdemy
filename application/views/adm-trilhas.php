@@ -18,13 +18,13 @@
 		</div>
 	</div>
 </div>
-
+<form action="http://localhost/ci/akdemy/adm_trilhas/editar/1" class="consultores" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 <?php
   foreach ($modulos as $modulo) {
     $modulo = $path.$modulo;
-    $this->load->view($modulo);;
+    $this->load->view($modulo);
   }
-    
-  $this->load->view('rodape');
-
 ?>
+</form>
+
+<?php $this->load->view('rodape'); ?>

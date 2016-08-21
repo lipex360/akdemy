@@ -91,7 +91,7 @@
 			$arEmbed = explode('/', $video->link);
 			$arLink = explode('?', $arEmbed[3]);
 			$arLinkv = explode('=', $arLink[1]);
-			$video->stream = $embed = $arLinkv[1];
+			$video->stream = $arLinkv[1];
 
 			return $video;
 		}
